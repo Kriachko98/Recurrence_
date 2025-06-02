@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="item--wrap">
+                <label for="name">Повне ім'я</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="item--wrap">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="item--wrap">
+                <label for="password">Пароль</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="item--wrap">
+                <label for="password-2">Пароль ще раз</label>
+                <input type="password" name="password-2" id="password-2">
+            </div>
+            <div class="item--wrap">Стать
+                <div class="radio--wrap">
+                    <label for="male">чоловіча</label>
+                    <input type="radio" name="sex" id="male" value="male" checked>
+                    <label for="female">жіноча</label>
+                    <input type="radio" name="sex" id="female" value="female">
+                </div>
+            </div>
+            <div class="item--wrap">
+                <label for="age">Вік</label>
+                <input type="number" name="age" id="age" min="16" max="85">
+            </div>
+            <div class="item--wrap">
+                <label for="courses">Курс</label>
+                <select name="courses" id="courses">
+                    <option value="">-=Виберіть курс=-</option>
+                    <option value="js">Java Script</option>
+                    <option value="react">React</option>
+                    <option value="angular">Angular</option>
+                    <option value="html&css">HTML та CSS</option>
+                    <option value="typescript">TypeScript</option>
+                    <option value="vue.js">Vue.js</option>
+                </select>
+            </div>
+            <div class="item--wrap">
+                <label for="adress">Повна адреса</label>
+                <textarea name="adress" id="adress" cols="25" rows="5" placeholder="Країна, регіон, місто/селище, вулиця"></textarea>
+            </div>
+            <div class="item--wrap">
+                <label for="agreement">Я погоджуюсь з обробкою персональних даних</label>
+                <input type="checkbox" name="agreement" id="agreement">
+            </div>
+            <div class="btn--wrap">
+                <button type="reset">Очистити форму</button>
+                <button type="submit">Зареєструватися</button>
+            </div>
+            <fieldset>
+                <legend>Додаткові поля форми</legend>
+                <div class="item--wrap">
+                    <label for="color">Оберіть колір</label>
+                    <input type="color" name="color" id="color">
+                </div>
+                <div class="item--wrap">
+                    <label for="date">Оберіть дату народження</label>
+                    <input type="date" name="date" id="date" min="1924-01-01">
+                </div>
+                <div class="item--wrap">
+                    <label for="date-time">Оберіть дату та час</label>
+                    <input type="datetime-local" name="date-time" id="date-time">
+                </div>
+                <div class="item--wrap">
+                    <label for="photo">Завантажте фотографію</label>
+                    <input type="file" name="photo" id="photo">
+                </div>
+                <div class="item--wrap">
+                    <label for="month">Оберіть місяць та рік</label>
+                    <input type="month" name="month" id="month">
+                </div>
+                <div class="item--wrap">
+                    <label for="phone">Номер телефону</label>
+                    <input type="tel" name="tel" id="phone" pattern="+[0-9]{2} [0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required>
+                </div>
+                <div class="item--wrap">
+                    <label for="search">Пошук</label>
+                    <input type="search" name="search" id="search">
+                </div>
+                <div class="item--wrap">
+                    <label for="range">Виберіть діапазон</label>
+                    <input type="range" name="range" id="range" min="0" max="100">
+                </div><div class="item--wrap">
+                    <label for="time">Оберіть час</label>
+                    <input type="time" name="time" id="time" min="09:00" max="18:00">
+                </div>
+                <div class="item--wrap">
+                    <label for="week">Оберіть тиждень</label>
+                    <input type="week" name="week" id="week">
+                </div>
+                <div class="item--wrap">
+                    <label for="url">Вставте посилання</label>
+                    <input type="url" name="url" id="url">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+$title-text: #3C3C3C;
+$hover-card: #18B5DC;
+$gray-text: #646464;
+$black-text: #282528;
+
+/* lato-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/lato-v24-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* lato-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/lato-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* lato-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/lato-v24-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@mixin font ($fz, $fw) {
+    font-size: $fz;
+    font-weight: $fw;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    object-fit: cover;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button, a {
+    transition: all .2s ease;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+body {
+    background-color: white;
+    font-family: 'Lato';
+}
+
+.container {
+    width: min(90%, 1170px);
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    &-item {
+        a {
+            color: $title-text;
+            &:hover {
+                cursor: pointer;
+                color: $hover-card;
+            }
+        }
+    }
+}
+
+// Header
+header {
+    height: 80px;
+    .header-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        .logo-wrap {
+            width: 170px;
+        }
+        .menu {
+            margin-right: 38px;
+            &-item {
+                @include font (1.25rem, 400);
+            }
+        }
+        .btn-callback {
+            width: 132px;
+            @include font (1.125rem, 400);
+            background-color: #fff;
+            border: 1px solid black;
+            color: $title-text;
+            padding: 10px 0;
+            font-family: 'Lato';
+            &:hover {
+                cursor: pointer;
+                background-color: $hover-card;
+                border-color: $hover-card;
+                color: white;
+            }
+        }
+    }
+}
+
+// Main
+.team-section {
+    padding: 150px 0;
+    background-color: #F6F6F6;
+    .title {
+        @include font (2.125rem, 700);
+        letter-spacing: 0.27625rem;
+        text-align: center;
+        color: $title-text;
+        position: relative;
+        margin-bottom: 60px;
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 45px;
+            border-bottom: 4px solid #DDDBDB;
+            position: absolute;
+            bottom: -16px;
+            left: calc(50% - 23px);
+        }
+    }
+    .promo {
+        @include font (1rem, 300);
+        color: $title-text;
+        line-height: 1.5rem;
+        width: min(100%, 570px);
+        margin: 0 auto 52px;
+        text-align: center;
+    }
+    .team-wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+// Employee profile
+.emp-card {
+    perspective: 1000px;
+    &:hover .flip-container {
+        transform: rotateY(180deg);
+       
+    }
+    .flip-container {
+        width: 270px;
+        aspect-ratio: 1;
+        position: relative;
+        transition: all .8s ease;
+        transform-style: preserve-3d;
+        margin-bottom: 20px;
+        .front-side, .back-side{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .front-side {
+            backface-visibility: hidden;
+        }
+        .back-side {
+            transform: rotateY(180deg);
+            background-color: $hover-card;
+            border: 1px solid white;
+            z-index: -1;
+            .soc-list {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                height: 100%;
+                li {
+                    width: 42px;
+                    height: 42px;
+                    text-align: center;
+                    a {
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100%;
+                        width: 100%;
+                        background-color: #5DCBE6;
+                        svg {
+                            fill: #fff;
+                            transition: all .2s ease;
+                        }
+                        &:hover {
+                            background-color: #fff;
+                            cursor: pointer;
+                            svg {
+                                fill: $hover-card;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .emp-name {
+        @include font (1.125rem, 700);
+        color: $black-text;
+        }
+    .emp-position {
+        @include font (1.125rem, 300);
+        color: $gray-text;
+    }
+}
+
+
+// Footer
+.footer-wrap {
+    padding: 40px 0;
+    text-align: center;
+    .logo-wrap {
+        width: 170px;
+        margin: 0 auto 28px;
+    }
+    .menu {
+        justify-content: center;
+        margin-bottom: 28px;
+        &-item {
+            @include font (1.125rem, 400);
+        }
+    }
+    .media-list {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        .media-item {
+            width: 42px;
+            aspect-ratio: 1;
+            border: 1px solid $hover-card;
+            a {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                svg {
+                    fill: $hover-card;
+                    transition: all .2s ease;
+                }
+                &:hover {
+                    background-color: $hover-card;
+                    svg {
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
