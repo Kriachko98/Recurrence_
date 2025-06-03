@@ -12,7 +12,7 @@ function task2 (){
 
 function task3 (){
     const flashCapacity = parseFloat(prompt(`Введіть об'єм пам'яті вашої флешки в Гб`));
-    const pcsFiles = parseInt(flashCapacity * 1000 / 820);
+    const pcsFiles = parseInt(flashCapacity * 1024 / 820);
     alert(`На вашу флешку вміститься ${pcsFiles} файлів об'ємом 820Мб`);
 };
 
@@ -31,4 +31,10 @@ function task5 (){
     const firstNum = Math.trunc(anyNum / 100);
     const turnedNum = lustNum + midNum + firstNum;
     alert(`Перевернуте число буде ${turnedNum}`);
+}
+
+function task6 (){
+    const startMoney = parseFloat(prompt(`Введіть суму вкладу, яку ви хочете покласти в банк на 2 місяці, з процентною ставкою депозиту 5% річних`));
+    const benefit = (startMoney * 0.05 / 12 * 2).toFixed(2);
+    alert(`Через два місяці вам нарахують ${benefit}грн відсотків`);
 }
