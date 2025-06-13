@@ -60,7 +60,6 @@ function task2(){
 function task3(){
     const num1 = document.getElementById('num1').valueAsNumber;
     const num2 = document.getElementById('num2').valueAsNumber;
-
     let from = Math.min(num1, num2);
     let to = Math.max(num1, num2);
     let sum = 0;
@@ -126,4 +125,93 @@ function task5(){
         };
     }
     document.getElementById('funcRez5').innerHTML = `<span style="color:brown">Дільниками вашого числа є ${devisors}</span>`;
-}
+};
+
+function task6(){
+    const fiveNum = document.getElementById('fiveNum').valueAsNumber;
+    let aNum = parseInt(fiveNum / 10000, 10);
+    let bNum = Math.trunc(fiveNum / 1000) % 10;
+    let dNum = Math.trunc(fiveNum / 10) % 10;
+    let eNum = fiveNum % 10;
+
+    if(isNaN(fiveNum)){
+        document.getElementById('funcRez6').innerHTML = '<span style="color:red">Incorrect value</span>';
+        return;
+    }else if(fiveNum < 10000 || fiveNum > 99999){
+        document.getElementById('funcRez6').innerHTML = `<span style="color:red">Це не п'ятизначне число</span>`;
+        return;
+    };
+
+    if(aNum === eNum && bNum === dNum){
+        document.getElementById('funcRez6').innerHTML = '<span style="color:green">Ваше число є паліндромом</span>';
+    }else{
+        document.getElementById('funcRez6').innerHTML = '<span style="color:purple">Це не паліндром</span>';
+    };
+};
+
+function task7(){
+    const sumProd = document.getElementById('sumProd').valueAsNumber;
+    let finishSum;
+
+    if(isNaN(sumProd)){
+        document.getElementById('funcRez7').innerHTML = `<span style="color:red">Incorrect value</span>`;
+        return;
+    }else if(sumProd < 0){
+        document.getElementById('funcRez7').innerHTML = `<span style="color:red">Від'ємної суми не може бути</span>`;
+        return;
+    }
+
+    if(sumProd > 199 && sumProd < 300){
+        finishSum = sumProd * 0.97
+    }else if(sumProd > 299 && sumProd < 500){
+        finishSum = sumProd * 0.95
+    }else if(sumProd > 499){
+        finishSum = sumProd * 0.93
+    }else{
+        finishSum = sumProd
+    };
+    document.getElementById('funcRez7').innerHTML = `<span style="color:orange">Сума до сплати: ${finishSum.toFixed(2)}грн</span>`;
+};
+
+function task8(){
+    const userNum10pcs = document.getElementById('userNum10pcs').value;
+    const parts = userNum10pcs.split(/[\s,]+/).map(Number);
+    let positiveNum = 0;
+    let negativeNum = 0;
+    let zero = 0;
+    let evenNum = 0;
+    let oddNum = 0;
+
+    if (parts.some(num => isNaN(num))) {
+        document.getElementById('funcRez8').innerHTML = `<span style="color:red">Incorrect value: введіть лише числа</span>`;
+        return;
+    }else if (parts.some(num => !Number.isInteger(num))) {
+        document.getElementById('funcRez8').innerHTML = `<span style="color:red">Числа мають бути цілими</span>`;
+        return;
+    }
+
+    for(let i of parts){
+        if(i > 0){
+            positiveNum++
+        }else if(i < 0){
+            negativeNum++
+        }else{
+            zero++
+        }
+
+        (i % 2 === 0) ? evenNum++ : oddNum++;
+    }
+    document.getElementById('funcRez8').innerHTML = `<span style="color:darkgray">Ви ввели ${positiveNum} додатніх значеннь, ${negativeNum} від'ємних значеннь, ${zero} нулів, ${evenNum} парних значеннь та ${oddNum} непарних значеннь</span>`
+};
+
+function task9(){
+    const today = new Date();
+    let dayOfWeek = today.getDay();
+    const weekDays = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
+    let currentDay = weekDays[dayOfWeek];
+
+    while(confirm(`${currentDay}. Хочеш побачити наступний день?`)){
+        dayOfWeek = (dayOfWeek + 1) % 7;
+        currentDay = weekDays[dayOfWeek];
+    }
+};
