@@ -285,3 +285,27 @@ function task9() {
 }
 
 ;
+
+function task10() {
+  var min = 0;
+  var max = 100;
+  var answear = '';
+
+  while (true) {
+    var mid = parseInt((min + max) / 2);
+    answear = prompt("\u0412\u0430\u0448\u0435 \u0447\u0438\u0441\u043B\u043E > ".concat(mid, ", \u0430\u0431\u043E < ").concat(mid, ", \u0430\u0431\u043E = ").concat(mid, "?"));
+
+    if (answear === '<') {
+      max = mid - 1;
+    } else if (answear === '>') {
+      min = mid + 1;
+    } else if (answear === '=') {
+      alert("\u0412\u0430\u0448\u0435 \u0447\u0438\u0441\u043B\u043E = ".concat(mid));
+      return;
+    } else if (answear !== '=' && answear !== '<' && answear !== '>') {
+      alert("\u0412\u0438 \u0432\u0432\u0435\u043B\u0438 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F");
+    }
+  }
+}
+
+;

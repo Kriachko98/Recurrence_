@@ -215,3 +215,26 @@ function task9(){
         currentDay = weekDays[dayOfWeek];
     }
 };
+
+function task10(){
+    let min = 0;
+    let max = 100;
+    let answear = '';
+    
+    while(true){
+        let mid = parseInt((min + max) / 2);
+        answear = prompt(`Ваше число > ${mid}, або < ${mid}, або = ${mid}?`);
+
+        if(answear === '<'){
+            max = mid - 1;
+        }else if(answear === '>'){
+            min = mid + 1;
+        }else if(answear === '='){
+            alert(`Ваше число = ${mid}`);
+            return;
+        }else if(answear !== '=' && answear !== '<' && answear !== '>'){
+            alert(`Ви ввели некорректне значення`);
+        }
+    }
+};
+
