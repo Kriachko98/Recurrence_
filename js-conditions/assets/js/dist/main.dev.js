@@ -276,7 +276,7 @@ function task9() {
   var today = new Date();
   var dayOfWeek = today.getDay();
   var weekDays = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
-  var currentDay = weekDays[dayOfWeek];
+  var currentDay = weekDays[dayOfWeek]; // TODO переписати на do while
 
   while (confirm("".concat(currentDay, ". \u0425\u043E\u0447\u0435\u0448 \u043F\u043E\u0431\u0430\u0447\u0438\u0442\u0438 \u043D\u0430\u0441\u0442\u0443\u043F\u043D\u0438\u0439 \u0434\u0435\u043D\u044C?"))) {
     dayOfWeek = (dayOfWeek + 1) % 7;
@@ -306,6 +306,41 @@ function task10() {
       alert("\u0412\u0438 \u0432\u0432\u0435\u043B\u0438 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F");
     }
   }
+}
+
+;
+
+function task11() {
+  for (var a = 2; a < 10; a++) {
+    for (var b = 1; b <= 10; b++) {
+      document.getElementById('funcRez11').innerHTML += "<div>".concat(a, " * ").concat(b, " = ").concat(a * b, "</div>");
+    }
+
+    document.getElementById('funcRez11').innerHTML += "<span>=======</span>";
+  }
+}
+
+;
+
+function task12() {
+  var userDate = document.getElementById('userDate').value;
+  var day = parseInt(userDate.substring(0, 2));
+  var month = parseInt(userDate.substring(3, 5));
+  var year = parseInt(userDate.substring(6, 10));
+
+  if (day < 1 || day > 31 || month < 1 || month > 12) {
+    document.getElementById('funcRez12').innerHTML = "<span style=\"color:red\">\u0422\u0430\u043A\u043E\u0457 \u0434\u0430\u0442\u0438 \u043D\u0435 \u0456\u0441\u043D\u0443\u0454</span>";
+    return;
+  } else if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    document.getElementById('funcRez12').innerHTML = "<span style=\"color:red\">Incorrect value</span>";
+    return;
+  }
+
+  var startDate = new Date(year, month - 1, day); // Збільшуємо день
+
+  startDate.setDate(startDate.getDate() + 1); // Виводимо як дату
+
+  document.getElementById('funcRez12').innerText = "\u041D\u0430\u0441\u0442\u0443\u043F\u043D\u0430 \u0434\u0430\u0442\u0430: ".concat(startDate.toLocaleDateString());
 }
 
 ;

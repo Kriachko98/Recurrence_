@@ -210,6 +210,7 @@ function task9(){
     const weekDays = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
     let currentDay = weekDays[dayOfWeek];
 
+    // TODO переписати на do while
     while(confirm(`${currentDay}. Хочеш побачити наступний день?`)){
         dayOfWeek = (dayOfWeek + 1) % 7;
         currentDay = weekDays[dayOfWeek];
@@ -238,3 +239,32 @@ function task10(){
     }
 };
 
+function task11(){
+    for(let a = 2; a < 10; a++){
+        for(let b = 1; b <= 10; b++){
+            document.getElementById('funcRez11').innerHTML += `<div>${a} * ${b} = ${a*b}</div>`
+        }
+        document.getElementById('funcRez11').innerHTML += `<span>=======</span>`
+    }
+};
+
+function task12() {
+    let userDate = document.getElementById('userDate').value;
+    let day = parseInt(userDate.substring(0, 2));
+    let month = parseInt(userDate.substring(3, 5));
+    let year = parseInt(userDate.substring(6, 10));
+
+    if(day < 1 || day > 31 || month < 1 || month > 12){
+        document.getElementById('funcRez12').innerHTML = `<span style="color:red">Такої дати не існує</span>`;
+        return;
+    }else if(isNaN(day) || isNaN(month) || isNaN(year)){
+        document.getElementById('funcRez12').innerHTML = `<span style="color:red">Incorrect value</span>`;
+        return;
+    }
+
+    let startDate = new Date(year, month - 1, day);
+    // Збільшуємо день
+    startDate.setDate(startDate.getDate() + 1);
+    // Виводимо як дату
+    document.getElementById('funcRez12').innerText = `Наступна дата: ${startDate.toLocaleDateString()}`;
+};
