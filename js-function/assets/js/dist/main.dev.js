@@ -1,0 +1,51 @@
+"use strict";
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+// Task 2
+function argPcs() {
+  return arguments.length;
+}
+
+;
+
+function param() {
+  var parameters = document.getElementById("argPcs").value;
+  var parts = parameters.split(/[\s,]+/);
+  var answear = argPcs.apply(void 0, _toConsumableArray(parts));
+  document.getElementById("paramRez").innerHTML = "\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0432\u0432\u0435\u0434\u0435\u043D\u0438\u0445 \u0432\u0430\u043C\u0438 \u0430\u0440\u0433\u0443\u043C\u0435\u043D\u0442\u0456\u0432 \u0431\u0443\u0434\u0435: ".concat(answear);
+} // Task 3
+
+
+function compare(a, b) {
+  if (a < b) {
+    return "-1 (\u043F\u0435\u0440\u0448\u0435 \u0447\u0438\u0441\u043B\u043E \u043C\u0435\u043D\u0448\u0435, \u043D\u0456\u0436 \u0434\u0440\u0443\u0433\u0435)";
+  } else if (a > b) {
+    return "1 (\u043F\u0435\u0440\u0448\u0435 \u0447\u0438\u0441\u043B\u043E \u0431\u0456\u043B\u044C\u0448\u0435, \u043D\u0456\u0436 \u0434\u0440\u0443\u0433\u0435)";
+  } else {
+    return "0 (\u0447\u0438\u0441\u043B\u0430 \u0440\u0456\u0432\u043D\u0456)";
+  }
+}
+
+;
+
+function compAnswear() {
+  var numA = document.getElementById("numA").valueAsNumber;
+  var numB = document.getElementById("numB").valueAsNumber;
+
+  if (isNaN(numA) || isNaN(numB)) {
+    document.getElementById("finalRez").innerHTML = "<span style=\"color:red\">Incorrect value</span>";
+    return;
+  }
+
+  var rezComp = compare(numA, numB);
+  document.getElementById("finalRez").innerHTML = "\u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u044C: ".concat(rezComp);
+}
+
+;
