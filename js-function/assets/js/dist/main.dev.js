@@ -48,4 +48,25 @@ function compAnswear() {
   document.getElementById("finalRez").innerHTML = "\u0432\u0456\u0434\u043F\u043E\u0432\u0456\u0434\u044C: ".concat(rezComp);
 }
 
+; // Task 4
+
+function getFactorial(n) {
+  if (n < 0) return "\u0424\u0430\u043A\u0442\u043E\u0440\u0456\u0430\u043B \u0432\u0456\u0434'\u0454\u043C\u043D\u0438\u0445 \u0447\u0438\u0441\u0435\u043B \u043D\u0435 \u043E\u0431\u0447\u0438\u0441\u043B\u044E\u0454\u0442\u044C\u0441\u044F";
+  var fact = 1;
+
+  for (var i = 2; i <= n; i++) {
+    fact *= i;
+  }
+
+  return fact;
+}
+
+;
+
+function factorial() {
+  var numFact = document.getElementById("numFact").valueAsNumber;
+  var factRez = getFactorial(numFact);
+  document.getElementById("factRez").innerHTML = "\u0424\u0430\u043A\u0442\u043E\u0440\u0456\u0430\u043B \u0432\u0430\u0448\u043E\u0433\u043E \u0447\u0438\u0441\u043B\u0430 \u0431\u0443\u0434\u0435: ".concat(factRez);
+}
+
 ;

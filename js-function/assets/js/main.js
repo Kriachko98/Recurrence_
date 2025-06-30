@@ -33,3 +33,19 @@ function compAnswear(){
     const rezComp = compare(numA, numB);
     document.getElementById(`finalRez`).innerHTML = `відповідь: ${rezComp}`;
 };
+
+// Task 4
+function getFactorial(n){
+    if(n < 0) return `Факторіал від'ємних чисел не обчислюється`;
+    
+    let fact = 1;
+    for(let i = 2; i <= n; i++){
+        fact *= i;
+    }
+    return fact;
+};
+function factorial(){
+    const numFact = document.getElementById(`numFact`).valueAsNumber;
+    const factRez = getFactorial(numFact);
+    document.getElementById(`factRez`).innerHTML = `Факторіал вашого числа буде: ${factRez}`;
+};
