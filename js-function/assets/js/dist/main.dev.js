@@ -69,4 +69,24 @@ function factorial() {
   document.getElementById("factRez").innerHTML = "\u0424\u0430\u043A\u0442\u043E\u0440\u0456\u0430\u043B \u0432\u0430\u0448\u043E\u0433\u043E \u0447\u0438\u0441\u043B\u0430 \u0431\u0443\u0434\u0435: ".concat(factRez);
 }
 
-;
+; // Task 5
+
+var unitNumbers = function unitNumbers(a, b, c) {
+  return String(a) + b + c;
+};
+
+function wholeNum() {
+  var numberA = document.getElementById("numberA").valueAsNumber;
+  var numberB = document.getElementById("numberB").valueAsNumber;
+  var numberC = document.getElementById("numberC").valueAsNumber;
+
+  if (numberA < 1 || numberA > 9 || numberB < 0 || numberB > 9 || numberC < 0 || numberC > 9) {
+    document.getElementById("wholeNumRez").innerHTML = "<span style=color:red>\u0423 \u043A\u043E\u0436\u043D\u043E\u043C\u0443 \u043F\u043E\u043B\u0456 \u043C\u0430\u0454 \u0431\u0443\u0442\u0438 \u043E\u0434\u043D\u0430 \u0446\u0438\u0444\u0440\u0430 \u0432\u0456\u0434 0 \u0434\u043E 9 \u043E\u043A\u0440\u0456\u043C \u043F\u0435\u0440\u0448\u043E\u0433\u043E \u043F\u043E\u043B\u044F. \u0412 \u043F\u0435\u0440\u0448\u043E\u043C\u0443 \u043F\u043E\u043B\u0456 \u0432\u0432\u0435\u0434\u0456\u0442\u044C \u0446\u0438\u0444\u0440\u0443 \u0432\u0456\u0434 1 \u0434\u043E 9</span>";
+    return;
+  } else if (isNaN(numberA) || isNaN(numberB) || isNaN(numberC)) {
+    document.getElementById("wholeNumRez").innerHTML = "<span style=color:red>Incorrect value</span>";
+    return;
+  }
+
+  document.getElementById("wholeNumRez").innerHTML = "\u041E\u0431'\u0454\u0434\u043D\u0430\u0432\u0448\u0438 \u0432\u0430\u0448\u0456 \u0446\u0438\u0444\u0440\u0438 \u0432\u0438\u0445\u043E\u0434\u0438\u0442\u044C: ".concat(unitNumbers(numberA, numberB, numberC));
+}
