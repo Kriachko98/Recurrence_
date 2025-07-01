@@ -67,4 +67,20 @@ function wholeNum(){
     }
 
     document.getElementById(`wholeNumRez`).innerHTML = `Об'єднавши ваші цифри виходить: ${unitNumbers(numberA, numberB, numberC)}`;
-}
+};
+
+// Task 6
+const getSquare = (a, b = a) => a * b;
+function squareRez(){
+    const width = document.getElementById(`width`).valueAsNumber;
+    let height = document.getElementById(`height`).valueAsNumber;
+
+    if(isNaN(width)){
+        document.getElementById(`squareRez`).innerHTML = `<span style=color:red>Incorrect value. Enter first value</span>`;
+        return;
+    }else if(isNaN(height)){
+        height = undefined;
+    }
+
+    document.getElementById(`squareRez`).innerHTML = `Площа вашого прямокутника: ${getSquare(width, height)}`;
+};

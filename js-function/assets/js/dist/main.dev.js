@@ -90,3 +90,26 @@ function wholeNum() {
 
   document.getElementById("wholeNumRez").innerHTML = "\u041E\u0431'\u0454\u0434\u043D\u0430\u0432\u0448\u0438 \u0432\u0430\u0448\u0456 \u0446\u0438\u0444\u0440\u0438 \u0432\u0438\u0445\u043E\u0434\u0438\u0442\u044C: ".concat(unitNumbers(numberA, numberB, numberC));
 }
+
+; // Task 6
+
+var getSquare = function getSquare(a) {
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : a;
+  return a * b;
+};
+
+function squareRez() {
+  var width = document.getElementById("width").valueAsNumber;
+  var height = document.getElementById("height").valueAsNumber;
+
+  if (isNaN(width)) {
+    document.getElementById("squareRez").innerHTML = "<span style=color:red>Incorrect value. Enter first value</span>";
+    return;
+  } else if (isNaN(height)) {
+    height = undefined;
+  }
+
+  document.getElementById("squareRez").innerHTML = "\u041F\u043B\u043E\u0449\u0430 \u0432\u0430\u0448\u043E\u0433\u043E \u043F\u0440\u044F\u043C\u043E\u043A\u0443\u0442\u043D\u0438\u043A\u0430: ".concat(getSquare(width, height));
+}
+
+;
