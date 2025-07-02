@@ -84,3 +84,29 @@ function squareRez(){
 
     document.getElementById(`squareRez`).innerHTML = `Площа вашого прямокутника: ${getSquare(width, height)}`;
 };
+
+// Task 7
+function isPerfectNum(a){
+    let rez = 0;
+    for(let i = 1; i < a; i++){
+        if(a % i === 0){
+            rez += i;
+        };
+    };
+    if(rez === a && a !== 0){
+        return `Число досконале`;
+    }else{
+        return `Число не досконале`;
+    };
+};
+function perfectNumRez(){
+    const userNumPerfect = document.getElementById(`perfectNum`).valueAsNumber;
+
+    if(isNaN(userNumPerfect)){
+        return document.getElementById(`perfectRez`).innerHTML = `<span style=color:red>Incorrect value</span>`;
+    }else if(userNumPerfect < 0){
+        return document.getElementById(`perfectRez`).innerHTML = `<span style=color:red>Число не може бути від'ємним</span>`;
+    }
+
+    document.getElementById(`perfectRez`).innerHTML = `${isPerfectNum(userNumPerfect)}`;
+};

@@ -112,4 +112,42 @@ function squareRez() {
   document.getElementById("squareRez").innerHTML = "\u041F\u043B\u043E\u0449\u0430 \u0432\u0430\u0448\u043E\u0433\u043E \u043F\u0440\u044F\u043C\u043E\u043A\u0443\u0442\u043D\u0438\u043A\u0430: ".concat(getSquare(width, height));
 }
 
+; // Task 7
+
+function isPerfectNum(a) {
+  var rez = 0;
+
+  for (var i = 1; i < a; i++) {
+    if (a % i === 0) {
+      rez += i;
+    }
+
+    ;
+  }
+
+  ;
+
+  if (rez === a && a !== 0) {
+    return "\u0427\u0438\u0441\u043B\u043E \u0434\u043E\u0441\u043A\u043E\u043D\u0430\u043B\u0435";
+  } else {
+    return "\u0427\u0438\u0441\u043B\u043E \u043D\u0435 \u0434\u043E\u0441\u043A\u043E\u043D\u0430\u043B\u0435";
+  }
+
+  ;
+}
+
+;
+
+function perfectNumRez() {
+  var userNumPerfect = document.getElementById("perfectNum").valueAsNumber;
+
+  if (isNaN(userNumPerfect)) {
+    return document.getElementById("perfectRez").innerHTML = "<span style=color:red>Incorrect value</span>";
+  } else if (userNumPerfect < 0) {
+    return document.getElementById("perfectRez").innerHTML = "<span style=color:red>\u0427\u0438\u0441\u043B\u043E \u043D\u0435 \u043C\u043E\u0436\u0435 \u0431\u0443\u0442\u0438 \u0432\u0456\u0434'\u0454\u043C\u043D\u0438\u043C</span>";
+  }
+
+  document.getElementById("perfectRez").innerHTML = "".concat(isPerfectNum(userNumPerfect));
+}
+
 ;
