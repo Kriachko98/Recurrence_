@@ -106,7 +106,41 @@ function perfectNumRez(){
         return document.getElementById(`perfectRez`).innerHTML = `<span style=color:red>Incorrect value</span>`;
     }else if(userNumPerfect < 0){
         return document.getElementById(`perfectRez`).innerHTML = `<span style=color:red>Число не може бути від'ємним</span>`;
-    }
+    };
 
     document.getElementById(`perfectRez`).innerHTML = `${isPerfectNum(userNumPerfect)}`;
+};
+
+// Task 8
+function perfectNumInScale(c, d){
+    let allNums = ``;
+    for(let a = c; a <= d; a++){
+        let rez = 0;
+        for(let i = 1; i < a; i++){
+            if(a % i === 0){
+                rez += i;
+            };
+        };
+        if(rez === a && a !== 0){
+            allNums += String(a) + ` `
+        }
+    };
+    return allNums;
+};
+function allPerfectNum(){
+    const scaleStart = document.getElementById(`scaleStart`).valueAsNumber;
+    const scaleFinish = document.getElementById(`scaleFinish`).valueAsNumber;
+    const scaleRez = perfectNumInScale(scaleStart, scaleFinish);
+
+    if(isNaN(scaleStart) || isNaN(scaleFinish)){
+        document.getElementById(`scaleRez`).innerHTML = `<span style=color:red>Incorrect value</span>`;
+        return;
+    };
+
+    if(scaleRez === ``){
+        document.getElementById(`scaleRez`).innerHTML = `З вашого діапазону немає досконалих чисел`;
+        return;
+    };
+
+    document.getElementById(`scaleRez`).innerHTML = `З вашого діапазону досконалими числами є: ${scaleRez}`;
 };

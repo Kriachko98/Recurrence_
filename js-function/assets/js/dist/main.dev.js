@@ -147,7 +147,58 @@ function perfectNumRez() {
     return document.getElementById("perfectRez").innerHTML = "<span style=color:red>\u0427\u0438\u0441\u043B\u043E \u043D\u0435 \u043C\u043E\u0436\u0435 \u0431\u0443\u0442\u0438 \u0432\u0456\u0434'\u0454\u043C\u043D\u0438\u043C</span>";
   }
 
+  ;
   document.getElementById("perfectRez").innerHTML = "".concat(isPerfectNum(userNumPerfect));
+}
+
+; // Task 8
+
+function perfectNumInScale(c, d) {
+  var allNums = "";
+
+  for (var a = c; a <= d; a++) {
+    var rez = 0;
+
+    for (var i = 1; i < a; i++) {
+      if (a % i === 0) {
+        rez += i;
+      }
+
+      ;
+    }
+
+    ;
+
+    if (rez === a && a !== 0) {
+      allNums += String(a) + " ";
+    }
+  }
+
+  ;
+  return allNums;
+}
+
+;
+
+function allPerfectNum() {
+  var scaleStart = document.getElementById("scaleStart").valueAsNumber;
+  var scaleFinish = document.getElementById("scaleFinish").valueAsNumber;
+  var scaleRez = perfectNumInScale(scaleStart, scaleFinish);
+
+  if (isNaN(scaleStart) || isNaN(scaleFinish)) {
+    document.getElementById("scaleRez").innerHTML = "<span style=color:red>Incorrect value</span>";
+    return;
+  }
+
+  ;
+
+  if (scaleRez === "") {
+    document.getElementById("scaleRez").innerHTML = "\u0417 \u0432\u0430\u0448\u043E\u0433\u043E \u0434\u0456\u0430\u043F\u0430\u0437\u043E\u043D\u0443 \u043D\u0435\u043C\u0430\u0454 \u0434\u043E\u0441\u043A\u043E\u043D\u0430\u043B\u0438\u0445 \u0447\u0438\u0441\u0435\u043B";
+    return;
+  }
+
+  ;
+  document.getElementById("scaleRez").innerHTML = "\u0417 \u0432\u0430\u0448\u043E\u0433\u043E \u0434\u0456\u0430\u043F\u0430\u0437\u043E\u043D\u0443 \u0434\u043E\u0441\u043A\u043E\u043D\u0430\u043B\u0438\u043C\u0438 \u0447\u0438\u0441\u043B\u0430\u043C\u0438 \u0454: ".concat(scaleRez);
 }
 
 ;
