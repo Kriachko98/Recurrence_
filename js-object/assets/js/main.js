@@ -79,3 +79,67 @@ const changeTime = {
 console.log(fullTime);
 console.log(changeTime);
 changeTime.showTime();
+
+// Maximum
+// const fracA = document.getElementById(`fracA`).valueAsNumber;
+// const fracB = document.getElementById(`fracB`).valueAsNumber;
+// const fracC = document.getElementById(`fracC`).valueAsNumber;
+// const fracD = document.getElementById(`fracD`).valueAsNumber;
+function workWithFractions(){
+    const fractions = {
+        a: document.getElementById(`fracA`).valueAsNumber,
+        b: document.getElementById(`fracB`).valueAsNumber,
+        c: document.getElementById(`fracC`).valueAsNumber,
+        d: document.getElementById(`fracD`).valueAsNumber,
+        addFractions: function(){
+            let rez = ``;
+            let comDem = 0;
+            let bigDem = Math.max(this.b, this.d);
+
+            if(this.b === this.d){
+                rez = this.a + this.c + `/` + this.b;
+            }else{
+                for(let i = bigDem; ; i++){
+                    if(i % this.b === 0 && i % this.d === 0){
+                        comDem = i;
+                        break; 
+                    }
+                }
+                rez = (comDem / this.b * this.a) + (comDem / this.d * this.c) + `/` + comDem;
+            };
+
+            document.getElementById(`addRez`).innerHTML = `Результат додавання дробів: ${rez}`;
+        },
+        subtractionFractions: function (){
+            let rez = ``;
+            let comDem = 0;
+            let bigDem = Math.max(this.b, this.d);
+
+            if(this.b === this.d){
+                rez = this.a - this.c + `/` + this.b;
+            }else{
+                for(let i = bigDem; ; i++){
+                    if(i % this.b === 0 && i % this.d === 0){
+                        comDem = i;
+                        break; 
+                    }
+                }
+                rez = (comDem / this.b * this.a) - (comDem / this.d * this.c) + `/` + comDem;
+            };
+
+            document.getElementById(`subRez`).innerHTML = `Результат віднімання дробів: ${rez}`;
+        },
+        multiplicationFractions: function (){
+            let rez = (this.a * this.c) + `/` + (this.b * this.d);
+            document.getElementById(`mulRez`).innerHTML = `Результат множення дробів: ${rez}`;
+        },
+        devisionFractions: function (){
+            let rez = (this.a * this.d) + `/` + (this.b * this.c);
+            document.getElementById(`devRez`).innerHTML = `Результат ділення дробів: ${rez}`;
+        }
+    };
+    fractions.addFractions();
+    fractions.subtractionFractions();
+    fractions.multiplicationFractions();
+    fractions.devisionFractions();
+}

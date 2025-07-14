@@ -83,4 +83,71 @@ var changeTime = {
 };
 console.log(fullTime);
 console.log(changeTime);
-changeTime.showTime();
+changeTime.showTime(); // Maximum
+// const fracA = document.getElementById(`fracA`).valueAsNumber;
+// const fracB = document.getElementById(`fracB`).valueAsNumber;
+// const fracC = document.getElementById(`fracC`).valueAsNumber;
+// const fracD = document.getElementById(`fracD`).valueAsNumber;
+
+function workWithFractions() {
+  var fractions = {
+    a: document.getElementById("fracA").valueAsNumber,
+    b: document.getElementById("fracB").valueAsNumber,
+    c: document.getElementById("fracC").valueAsNumber,
+    d: document.getElementById("fracD").valueAsNumber,
+    addFractions: function addFractions() {
+      var rez = "";
+      var comDem = 0;
+      var bigDem = Math.max(this.b, this.d);
+
+      if (this.b === this.d) {
+        rez = this.a + this.c + "/" + this.b;
+      } else {
+        for (var i = bigDem;; i++) {
+          if (i % this.b === 0 && i % this.d === 0) {
+            comDem = i;
+            break;
+          }
+        }
+
+        rez = comDem / this.b * this.a + comDem / this.d * this.c + "/" + comDem;
+      }
+
+      ;
+      document.getElementById("addRez").innerHTML = "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0434\u043E\u0434\u0430\u0432\u0430\u043D\u043D\u044F \u0434\u0440\u043E\u0431\u0456\u0432: ".concat(rez);
+    },
+    subtractionFractions: function subtractionFractions() {
+      var rez = "";
+      var comDem = 0;
+      var bigDem = Math.max(this.b, this.d);
+
+      if (this.b === this.d) {
+        rez = this.a - this.c + "/" + this.b;
+      } else {
+        for (var i = bigDem;; i++) {
+          if (i % this.b === 0 && i % this.d === 0) {
+            comDem = i;
+            break;
+          }
+        }
+
+        rez = comDem / this.b * this.a - comDem / this.d * this.c + "/" + comDem;
+      }
+
+      ;
+      document.getElementById("subRez").innerHTML = "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0432\u0456\u0434\u043D\u0456\u043C\u0430\u043D\u043D\u044F \u0434\u0440\u043E\u0431\u0456\u0432: ".concat(rez);
+    },
+    multiplicationFractions: function multiplicationFractions() {
+      var rez = this.a * this.c + "/" + this.b * this.d;
+      document.getElementById("mulRez").innerHTML = "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u043C\u043D\u043E\u0436\u0435\u043D\u043D\u044F \u0434\u0440\u043E\u0431\u0456\u0432: ".concat(rez);
+    },
+    devisionFractions: function devisionFractions() {
+      var rez = this.a * this.d + "/" + this.b * this.c;
+      document.getElementById("devRez").innerHTML = "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 \u0434\u0456\u043B\u0435\u043D\u043D\u044F \u0434\u0440\u043E\u0431\u0456\u0432: ".concat(rez);
+    }
+  };
+  fractions.addFractions();
+  fractions.subtractionFractions();
+  fractions.multiplicationFractions();
+  fractions.devisionFractions();
+}
