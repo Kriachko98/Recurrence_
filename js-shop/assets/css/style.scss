@@ -3,27 +3,3 @@
     margin-inline: auto;
     padding-top: 60px;
 }
-
-.my-toast {
-    position: fixed;
-    right: 60px;
-    top: 30px;
-    border-radius: 10px;
-    padding: 10px 20px;
-    z-index: 10;
-    background-color: lavender;
-}
-.my-toast.success {
-    background-color: #198754;
-    color: white;
-}
-.my-toast.error {
-    background-color: #dc3545;
-    color: white;
-}
-.my-toast.warning {
-    background-color: orange;
-}
-.my-toast.info {
-    border-color: aqua;
-}

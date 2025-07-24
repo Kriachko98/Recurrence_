@@ -26,36 +26,3 @@ function addToCart(){
     }
 };
 
-const toast = {
-    timeuotID: null,
-    success: function(text){
-        this.show(text, `success`)
-    },
-    error: function(text){
-        this.show(text, `error`)
-    },
-    warning: function(text){
-        this.show(text, `warning`)
-    },
-    info: function(text){
-        this.show(text, `info`)
-    },
-    show: function(text, type = ``){
-        const myToast = document.getElementById(`my-toast`);
-        if(myToast){
-            clearTimeout(this.timeuotID);
-            myToast.remove();
-        };
-        const html = `<div id="my-toast" class="my-toast ${type}">
-            <p class="mb-0">${text}</p>
-        </div>`;
-        document.body.insertAdjacentHTML(`afterbegin`, html);
-        this.hide(3000);
-    },
-    hide: function(timeout){
-        this.timeoutID = setTimeout(function(){
-            const myToast = document.getElementById(`my-toast`);
-            myToast && myToast.remove();
-        }, timeout);
-    }
-}

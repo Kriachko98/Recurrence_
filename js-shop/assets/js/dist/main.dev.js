@@ -31,38 +31,3 @@ function addToCart() {
 }
 
 ;
-var toast = {
-  timeuotID: null,
-  success: function success(text) {
-    this.show(text, "success");
-  },
-  error: function error(text) {
-    this.show(text, "error");
-  },
-  warning: function warning(text) {
-    this.show(text, "warning");
-  },
-  info: function info(text) {
-    this.show(text, "info");
-  },
-  show: function show(text) {
-    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-    var myToast = document.getElementById("my-toast");
-
-    if (myToast) {
-      clearTimeout(this.timeuotID);
-      myToast.remove();
-    }
-
-    ;
-    var html = "<div id=\"my-toast\" class=\"my-toast ".concat(type, "\">\n            <p class=\"mb-0\">").concat(text, "</p>\n        </div>");
-    document.body.insertAdjacentHTML("afterbegin", html);
-    this.hide(3000);
-  },
-  hide: function hide(timeout) {
-    this.timeoutID = setTimeout(function () {
-      var myToast = document.getElementById("my-toast");
-      myToast && myToast.remove();
-    }, timeout);
-  }
-};
