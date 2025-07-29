@@ -1,10 +1,6 @@
 "use strict";
 
-var CART = [{
-  title: '',
-  qty: 1,
-  price: 1.00
-}];
+var CART = [];
 
 function _el(id) {
   return document.getElementById(id);
@@ -19,15 +15,48 @@ function addToCart() {
 
   var price = _el("prod_price").valueAsNumber;
 
-  if (title !== '' && qty > 0 && !isNaN(price)) {
+  if (title === '') {
+    toast.error("Enter title");
+    return;
+  } else if (qty <= 0) {
+    toast.error("Incorrect quantity");
+    return;
+  } else if (isNaN(price)) {
+    toast.error("Enter price");
+    return;
+  }
+
+  ;
+  var prodIndex = CART.findIndex(function (prod) {
+    return prod.title === title;
+  });
+
+  if (prodIndex === -1) {
     CART.push({
       title: title,
       qty: qty,
       price: price
     });
+    toast.success("Product is added");
   } else {
-    toast.error("Enter product info");
+    CART[prodIndex].qty += qty;
   }
+
+  ;
+  _el("prod_title").value = '';
+  _el("prod_qty").valueAsNumber = 1;
+  _el("prod_price").value = '';
+  productList();
+}
+
+;
+
+function productList() {
+  var tbody = "";
+  CART.forEach(function (prod, index) {
+    tbody += "<tr>\n        <td>".concat(index + 1, "</td>\n        <td>").concat(prod.title, "</td>\n        <td>").concat(prod.qty, "</td>\n        <td>").concat(prod.price.toFixed(2), "</td>\n        <td>").concat((prod.qty * prod.price).toFixed(2), "</td>\n        <td></td>\n        </tr>");
+  });
+  _el("cart_tbody").innerHTML = tbody;
 }
 
 ;
