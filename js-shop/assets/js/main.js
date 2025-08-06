@@ -45,7 +45,13 @@ function productList(){
         tbody += `<tr>
         <td>${index + 1}</td>
         <td>${prod.title}</td>
-        <td>${prod.qty}</td>
+        <td>
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" onclick="changeQty(${index}, 'dec')">-</button>
+                <input type="text" class="form-control" value="${prod.qty}">
+                <button class="btn btn-outline-secondary" type="button" onclick="changeQty(${index}, 'inc')">+</button>
+            </div>
+        </td>
         <td>${prod.price.toFixed(2)}</td>
         <td>${(prod.qty * prod.price).toFixed(2)}</td>
         <td>
@@ -54,6 +60,7 @@ function productList(){
         </tr>`
     });
     _el(`cart_tbody`).innerHTML = tbody;
+    _el(`cart_total`).innerHTML = sumProd();
 };
 
 function deleteProd(index, title){
@@ -63,3 +70,21 @@ function deleteProd(index, title){
         toast.success(`${title} was deleted`);
     };
 };
+
+function sumProd(){
+    return CART.reduce((accum, prod) => accum + prod.qty * prod.price, 0).toFixed(2);
+};
+
+function changeQty(index, action){
+    const qtyFirst = CART[index].qty;
+    if(action === 'inc'){
+        CART[index].qty++;
+    }else if(action === 'dec'){
+        if(qtyFirst === 1){
+            deleteProd(index, CART[index].title)
+        }else{
+            CART[index].qty--;
+        };
+    };
+    productList();
+}
