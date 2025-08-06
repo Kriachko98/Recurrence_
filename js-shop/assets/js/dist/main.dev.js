@@ -54,9 +54,21 @@ function addToCart() {
 function productList() {
   var tbody = "";
   CART.forEach(function (prod, index) {
-    tbody += "<tr>\n        <td>".concat(index + 1, "</td>\n        <td>").concat(prod.title, "</td>\n        <td>").concat(prod.qty, "</td>\n        <td>").concat(prod.price.toFixed(2), "</td>\n        <td>").concat((prod.qty * prod.price).toFixed(2), "</td>\n        <td></td>\n        </tr>");
+    tbody += "<tr>\n        <td>".concat(index + 1, "</td>\n        <td>").concat(prod.title, "</td>\n        <td>").concat(prod.qty, "</td>\n        <td>").concat(prod.price.toFixed(2), "</td>\n        <td>").concat((prod.qty * prod.price).toFixed(2), "</td>\n        <td>\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" onclick='deleteProd(").concat(index, ", \"").concat(prod.title, "\")'>Remove</button>\n        </td>\n        </tr>");
   });
   _el("cart_tbody").innerHTML = tbody;
+}
+
+;
+
+function deleteProd(index, title) {
+  if (confirm("Do you want to delate ".concat(title, "?"))) {
+    CART.splice(index, 1);
+    productList();
+    toast.success("".concat(title, " was deleted"));
+  }
+
+  ;
 }
 
 ;

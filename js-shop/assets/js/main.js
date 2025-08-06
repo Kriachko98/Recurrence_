@@ -48,9 +48,18 @@ function productList(){
         <td>${prod.qty}</td>
         <td>${prod.price.toFixed(2)}</td>
         <td>${(prod.qty * prod.price).toFixed(2)}</td>
-        <td></td>
+        <td>
+            <button type="button" class="btn btn-danger btn-sm" onclick='deleteProd(${index}, "${prod.title}")'>Remove</button>
+        </td>
         </tr>`
     });
     _el(`cart_tbody`).innerHTML = tbody;
 };
 
+function deleteProd(index, title){
+    if(confirm(`Do you want to delate ${title}?`)){
+        CART.splice(index, 1);
+        productList();
+        toast.success(`${title} was deleted`);
+    };
+};
