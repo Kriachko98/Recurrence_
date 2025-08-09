@@ -1,4 +1,14 @@
-const CART = [];
+const CART = [
+    {
+        title: 'Milk',
+        qty: 2,
+        price: 25.5
+    }
+];
+productList();
+
+let editMode = false;
+let editID = null;
 
 function _el(id){
     return document.getElementById(id);
@@ -20,17 +30,28 @@ function addToCart(){
         return;
     };
 
-    const prodIndex = CART.findIndex(prod => prod.title === title);
-    if(prodIndex === -1){
-        CART.push({
+    if(editMode){
+        CART[editID] = {
             title,
             qty,
             price
-        })
-        toast.success(`Product is added`);
+        }
+        toast.success('Product is updated');
+        editMode = false;
+        editID = null;
     }else{
-        CART[prodIndex].qty += qty
-    };
+        const prodIndex = CART.findIndex(prod => prod.title === title);
+        if(prodIndex === -1){
+            CART.push({
+                title,
+                qty,
+                price
+            })
+            toast.success(`Product is added`);
+        }else{
+            CART[prodIndex].qty += qty
+        };
+    }
 
     _el(`prod_title`).value = '';
     _el(`prod_qty`).valueAsNumber = 1;
@@ -55,13 +76,25 @@ function productList(){
         <td>${prod.price.toFixed(2)}</td>
         <td>${(prod.qty * prod.price).toFixed(2)}</td>
         <td>
+            <button type="button" class="btn btn-info btn-sm" onclick='editProd(${index})'>Edit</button>
             <button type="button" class="btn btn-danger btn-sm" onclick='deleteProd(${index}, "${prod.title}")'>Remove</button>
         </td>
         </tr>`
     });
     _el(`cart_tbody`).innerHTML = tbody;
-    _el(`cart_total`).innerHTML = sumProd();
+    const disc = calcDisc();
+    _el(`cart_total`).innerHTML = (sumProd() - disc).toFixed(2);
+    _el('cart_disc').innerHTML = disc.toFixed(2);
 };
+
+function editProd(index){
+    const prod = CART[index];
+    editMode = true;
+    editID = index;
+    _el(`prod_title`).value = prod.title;
+    _el(`prod_qty`).valueAsNumber = prod.qty;
+    _el(`prod_price`).value = prod.price; 
+}
 
 function deleteProd(index, title){
     if(confirm(`Do you want to delate ${title}?`)){
@@ -72,7 +105,7 @@ function deleteProd(index, title){
 };
 
 function sumProd(){
-    return CART.reduce((accum, prod) => accum + prod.qty * prod.price, 0).toFixed(2);
+    return CART.reduce((accum, prod) => accum + prod.qty * prod.price, 0);
 };
 
 function changeQty(index, action){
@@ -87,4 +120,28 @@ function changeQty(index, action){
         };
     };
     productList();
+};
+
+function applyDisc(){
+    const amount = _el('disc_amount').valueAsNumber;
+
+    if(isNaN(amount)){
+        toast.error('Enter amount of discount');
+        return;
+    };
+    productList();
+};
+
+function calcDisc(){
+    const type = _el('disc_type').value;
+    const amount = _el('disc_amount').valueAsNumber || 0;
+    let sum = sumProd();
+
+    if(type === 'percent'){
+        return sum * amount / 100;
+    }
+    if(type === 'fixed'){
+        return amount;
+    }
+    return 0;
 }
