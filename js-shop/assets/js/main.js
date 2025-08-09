@@ -77,8 +77,8 @@ function addToCart(){
 
 function productList(){
     let tbody = ``;
-    const cartSorted = sortList();
-    cartSorted.forEach((prod, index) => {
+    sortList();
+    CART.forEach((prod, index) => {
         tbody += `<tr>
         <td>${index + 1}</td>
         <td>${prod.title}</td>
@@ -108,20 +108,32 @@ function sortList(){
 
     switch(sort){
         case 'subTotalAsc':
-            return CART.toSorted((a, b) => a.qty * a.price - b.qty * b.price);
+            return CART.sort((a, b) => a.qty * a.price - b.qty * b.price);
         case 'subTotalDesc':
-            return CART.toSorted((a, b) => b.qty * b.price - a.qty * a.price);
+            return CART.sort((a, b) => b.qty * b.price - a.qty * a.price);
         case 'qtyAsc':
-            return CART.toSorted((a, b) => a.qty - b.qty);
+            return CART.sort((a, b) => a.qty - b.qty);
         case 'qtyDesc':
-            return CART.toSorted((a, b) => b.qty - a.qty);
+            return CART.sort((a, b) => b.qty - a.qty);
         case 'titleAtoZ':
-            return CART.toSorted((a, b) => a.title > b.title ? 1 : a.title < b.title ? -1 : 0);
+            return CART.sort((a, b) => a.title > b.title ? 1 : a.title < b.title ? -1 : 0);
         case 'titleZtoA':
-            return CART.toSorted((a, b) => b.title > a.title ? 1 : b.title < a.title ? -1 : 0);
+            return CART.sort((a, b) => b.title > a.title ? 1 : b.title < a.title ? -1 : 0);
         default:
             return CART;        
     };
+
+    // Альтернативне рішення для сортування через Object
+
+    // const sortFn = {
+    //     subTotalAsc: (a, b) => a.qty * a.price - b.qty * b.price,
+    //     subTotalDesc: (a, b) => b.qty * b.price - a.qty * a.price,
+    //     qtyAsc: (a, b) => a.qty - b.qty,
+    //     qtyDesc: (a, b) => b.qty - a.qty,
+    //     titleAtoZ: (a, b) => a.title > b.title ? 1 : a.title < b.title ? -1 : 0,
+    //     titleZtoA: (a, b) => b.title > a.title ? 1 : b.title < a.title ? -1 : 0,
+    // }
+    // CART.sort((a, b) => sortFn[sort](a, b))
 };
 
 function editProd(index){

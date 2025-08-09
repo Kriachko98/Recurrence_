@@ -85,8 +85,8 @@ function addToCart() {
 
 function productList() {
   var tbody = "";
-  var cartSorted = sortList();
-  cartSorted.forEach(function (prod, index) {
+  sortList();
+  CART.forEach(function (prod, index) {
     tbody += "<tr>\n        <td>".concat(index + 1, "</td>\n        <td>").concat(prod.title, "</td>\n        <td>\n            <div class=\"input-group mb-3\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" onclick=\"changeQty(").concat(index, ", 'dec')\">-</button>\n                <input type=\"text\" class=\"form-control\" value=\"").concat(prod.qty, "\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" onclick=\"changeQty(").concat(index, ", 'inc')\">+</button>\n            </div>\n        </td>\n        <td>").concat(prod.price.toFixed(2), "</td>\n        <td>").concat((prod.qty * prod.price).toFixed(2), "</td>\n        <td>\n            <button type=\"button\" class=\"btn btn-info btn-sm\" onclick='editProd(").concat(index, ")'>Edit</button>\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" onclick='deleteProd(").concat(index, ", \"").concat(prod.title, "\")'>Remove</button>\n        </td>\n        </tr>");
   });
   _el("cart_tbody").innerHTML = tbody;
@@ -102,32 +102,32 @@ function sortList() {
 
   switch (sort) {
     case 'subTotalAsc':
-      return CART.toSorted(function (a, b) {
+      return CART.sort(function (a, b) {
         return a.qty * a.price - b.qty * b.price;
       });
 
     case 'subTotalDesc':
-      return CART.toSorted(function (a, b) {
+      return CART.sort(function (a, b) {
         return b.qty * b.price - a.qty * a.price;
       });
 
     case 'qtyAsc':
-      return CART.toSorted(function (a, b) {
+      return CART.sort(function (a, b) {
         return a.qty - b.qty;
       });
 
     case 'qtyDesc':
-      return CART.toSorted(function (a, b) {
+      return CART.sort(function (a, b) {
         return b.qty - a.qty;
       });
 
     case 'titleAtoZ':
-      return CART.toSorted(function (a, b) {
+      return CART.sort(function (a, b) {
         return a.title > b.title ? 1 : a.title < b.title ? -1 : 0;
       });
 
     case 'titleZtoA':
-      return CART.toSorted(function (a, b) {
+      return CART.sort(function (a, b) {
         return b.title > a.title ? 1 : b.title < a.title ? -1 : 0;
       });
 
@@ -135,7 +135,16 @@ function sortList() {
       return CART;
   }
 
-  ;
+  ; // Альтернативне рішення для сортування через Object
+  // const sortFn = {
+  //     subTotalAsc: (a, b) => a.qty * a.price - b.qty * b.price,
+  //     subTotalDesc: (a, b) => b.qty * b.price - a.qty * a.price,
+  //     qtyAsc: (a, b) => a.qty - b.qty,
+  //     qtyDesc: (a, b) => b.qty - a.qty,
+  //     titleAtoZ: (a, b) => a.title > b.title ? 1 : a.title < b.title ? -1 : 0,
+  //     titleZtoA: (a, b) => b.title > a.title ? 1 : b.title < a.title ? -1 : 0,
+  // }
+  // CART.sort((a, b) => sortFn[sort](a, b))
 }
 
 ;
