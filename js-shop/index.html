@@ -57,6 +57,14 @@
                 <h3>Products list</h3>
             </div>
             <div class="card-body">
+                <select name="" id="sorting" class="form-control" onchange="productList()">
+                    <option value="subTotalAsc">Sub total to high</option>
+                    <option value="subTotalDesc">Sub total to low</option>
+                    <option value="qtyAsc">Quantity to high</option>
+                    <option value="qtyDesc">Quantity to low</option>
+                    <option value="titleAtoZ">Title A-Z</option>
+                    <option value="titleZtoA">Title Z-A</option>
+                </select>
                 <table class="table">
                     <thead>
                         <tr>

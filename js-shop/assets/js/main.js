@@ -3,6 +3,21 @@ const CART = [
         title: 'Milk',
         qty: 2,
         price: 25.5
+    },
+    {
+        title: 'Bread',
+        qty: 1,
+        price: 19.90
+    },
+    {
+        title: 'Kit-kat',
+        qty: 5,
+        price: 17.89
+    },
+    {
+        title: 'Water 1.5l',
+        qty: 3,
+        price: 20
     }
 ];
 productList();
@@ -62,7 +77,8 @@ function addToCart(){
 
 function productList(){
     let tbody = ``;
-    CART.forEach((prod, index) => {
+    const cartSorted = sortList();
+    cartSorted.forEach((prod, index) => {
         tbody += `<tr>
         <td>${index + 1}</td>
         <td>${prod.title}</td>
@@ -85,6 +101,27 @@ function productList(){
     const disc = calcDisc();
     _el(`cart_total`).innerHTML = (sumProd() - disc).toFixed(2);
     _el('cart_disc').innerHTML = disc.toFixed(2);
+};
+
+function sortList(){
+    const sort = _el('sorting').value;
+
+    switch(sort){
+        case 'subTotalAsc':
+            return CART.toSorted((a, b) => a.qty * a.price - b.qty * b.price);
+        case 'subTotalDesc':
+            return CART.toSorted((a, b) => b.qty * b.price - a.qty * a.price);
+        case 'qtyAsc':
+            return CART.toSorted((a, b) => a.qty - b.qty);
+        case 'qtyDesc':
+            return CART.toSorted((a, b) => b.qty - a.qty);
+        case 'titleAtoZ':
+            return CART.toSorted((a, b) => a.title > b.title ? 1 : a.title < b.title ? -1 : 0);
+        case 'titleZtoA':
+            return CART.toSorted((a, b) => b.title > a.title ? 1 : b.title < a.title ? -1 : 0);
+        default:
+            return CART;        
+    };
 };
 
 function editProd(index){

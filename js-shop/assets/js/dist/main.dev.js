@@ -4,6 +4,18 @@ var CART = [{
   title: 'Milk',
   qty: 2,
   price: 25.5
+}, {
+  title: 'Bread',
+  qty: 1,
+  price: 19.90
+}, {
+  title: 'Kit-kat',
+  qty: 5,
+  price: 17.89
+}, {
+  title: 'Water 1.5l',
+  qty: 3,
+  price: 20
 }];
 productList();
 var editMode = false;
@@ -73,13 +85,57 @@ function addToCart() {
 
 function productList() {
   var tbody = "";
-  CART.forEach(function (prod, index) {
+  var cartSorted = sortList();
+  cartSorted.forEach(function (prod, index) {
     tbody += "<tr>\n        <td>".concat(index + 1, "</td>\n        <td>").concat(prod.title, "</td>\n        <td>\n            <div class=\"input-group mb-3\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" onclick=\"changeQty(").concat(index, ", 'dec')\">-</button>\n                <input type=\"text\" class=\"form-control\" value=\"").concat(prod.qty, "\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" onclick=\"changeQty(").concat(index, ", 'inc')\">+</button>\n            </div>\n        </td>\n        <td>").concat(prod.price.toFixed(2), "</td>\n        <td>").concat((prod.qty * prod.price).toFixed(2), "</td>\n        <td>\n            <button type=\"button\" class=\"btn btn-info btn-sm\" onclick='editProd(").concat(index, ")'>Edit</button>\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" onclick='deleteProd(").concat(index, ", \"").concat(prod.title, "\")'>Remove</button>\n        </td>\n        </tr>");
   });
   _el("cart_tbody").innerHTML = tbody;
   var disc = calcDisc();
   _el("cart_total").innerHTML = (sumProd() - disc).toFixed(2);
   _el('cart_disc').innerHTML = disc.toFixed(2);
+}
+
+;
+
+function sortList() {
+  var sort = _el('sorting').value;
+
+  switch (sort) {
+    case 'subTotalAsc':
+      return CART.toSorted(function (a, b) {
+        return a.qty * a.price - b.qty * b.price;
+      });
+
+    case 'subTotalDesc':
+      return CART.toSorted(function (a, b) {
+        return b.qty * b.price - a.qty * a.price;
+      });
+
+    case 'qtyAsc':
+      return CART.toSorted(function (a, b) {
+        return a.qty - b.qty;
+      });
+
+    case 'qtyDesc':
+      return CART.toSorted(function (a, b) {
+        return b.qty - a.qty;
+      });
+
+    case 'titleAtoZ':
+      return CART.toSorted(function (a, b) {
+        return a.title > b.title ? 1 : a.title < b.title ? -1 : 0;
+      });
+
+    case 'titleZtoA':
+      return CART.toSorted(function (a, b) {
+        return b.title > a.title ? 1 : b.title < a.title ? -1 : 0;
+      });
+
+    default:
+      return CART;
+  }
+
+  ;
 }
 
 ;
