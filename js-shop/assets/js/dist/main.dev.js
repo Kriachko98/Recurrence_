@@ -2,18 +2,22 @@
 
 var CART = [{
   title: 'Milk',
+  isBuy: true,
   qty: 2,
   price: 25.5
 }, {
   title: 'Bread',
+  isBuy: true,
   qty: 1,
   price: 19.90
 }, {
   title: 'Kit-kat',
+  isBuy: false,
   qty: 5,
   price: 17.89
 }, {
   title: 'Water 1.5l',
+  isBuy: false,
   qty: 3,
   price: 20
 }];
@@ -87,7 +91,15 @@ function productList() {
   var tbody = "";
   sortList();
   CART.forEach(function (prod, index) {
-    tbody += "<tr>\n        <td>".concat(index + 1, "</td>\n        <td>").concat(prod.title, "</td>\n        <td>\n            <div class=\"input-group mb-3\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" onclick=\"changeQty(").concat(index, ", 'dec')\">-</button>\n                <input type=\"text\" class=\"form-control\" value=\"").concat(prod.qty, "\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" onclick=\"changeQty(").concat(index, ", 'inc')\">+</button>\n            </div>\n        </td>\n        <td>").concat(prod.price.toFixed(2), "</td>\n        <td>").concat((prod.qty * prod.price).toFixed(2), "</td>\n        <td>\n            <button type=\"button\" class=\"btn btn-info btn-sm\" onclick='editProd(").concat(index, ")'>Edit</button>\n            <button type=\"button\" class=\"btn btn-danger btn-sm\" onclick='deleteProd(").concat(index, ", \"").concat(prod.title, "\")'>Remove</button>\n        </td>\n        </tr>");
+    var badge = prod.isBuy ? "<span class=\"badge rounded-pill text-bg-success\">Yes</span>" : "<span class=\"badge rounded-pill text-bg-secondary\">No</span>";
+    var disableBtn = prod.isBuy ? 'disabled' : '';
+    tbody += "<tr>\n        <td>".concat(index + 1, "</td>\n        <td>").concat(prod.title, "</td>\n        <td>").concat(badge, "</td>\n        <td>\n            <div class=\"input-group mb-3\">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" ").concat(disableBtn, " onclick=\"changeQty(").concat(index, ", 'dec')\">-</button>\n                <input type=\"text\" class=\"form-control\" value=\"").concat(prod.qty, "\" ").concat(disableBtn, ">\n                <button class=\"btn btn-outline-secondary\" type=\"button\" ").concat(disableBtn, " onclick=\"changeQty(").concat(index, ", 'inc')\">+</button>\n            </div>\n        </td>\n        <td>").concat(prod.price.toFixed(2), "</td>\n        <td>").concat((prod.qty * prod.price).toFixed(2), "</td>\n        <td>");
+
+    if (!prod.isBuy) {
+      tbody += "\n                    <button type=\"button\" class=\"btn btn-info btn-sm\" onclick='editProd(".concat(index, ")'>Edit</button>\n                    <button type=\"button\" class=\"btn btn-warning btn-sm\" onclick='buyProd(").concat(index, ", \"").concat(prod.title, "\")'>Buy</button>\n                    <button type=\"button\" class=\"btn btn-danger btn-sm\" onclick='deleteProd(").concat(index, ", \"").concat(prod.title, "\")'>Remove</button>");
+    }
+
+    tbody += "\n        </td>\n        </tr>";
   });
   _el("cart_tbody").innerHTML = tbody;
   var disc = calcDisc();
@@ -156,6 +168,14 @@ function editProd(index) {
   _el("prod_title").value = prod.title;
   _el("prod_qty").valueAsNumber = prod.qty;
   _el("prod_price").value = prod.price;
+}
+
+;
+
+function buyProd(index, title) {
+  CART[index].isBuy = true;
+  productList();
+  toast.success("".concat(title, " is bought"));
 }
 
 function deleteProd(index, title) {

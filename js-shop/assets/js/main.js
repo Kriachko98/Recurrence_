@@ -1,21 +1,25 @@
 const CART = [
     {
         title: 'Milk',
+        isBuy: true,
         qty: 2,
         price: 25.5
     },
     {
         title: 'Bread',
+        isBuy: true,
         qty: 1,
         price: 19.90
     },
     {
         title: 'Kit-kat',
+        isBuy: false,
         qty: 5,
         price: 17.89
     },
     {
         title: 'Water 1.5l',
+        isBuy: false,
         qty: 3,
         price: 20
     }
@@ -79,21 +83,30 @@ function productList(){
     let tbody = ``;
     sortList();
     CART.forEach((prod, index) => {
+        const badge = prod.isBuy ? `<span class="badge rounded-pill text-bg-success">Yes</span>` : `<span class="badge rounded-pill text-bg-secondary">No</span>`;
+        const disableBtn = prod.isBuy ? 'disabled' : '';
+
         tbody += `<tr>
         <td>${index + 1}</td>
         <td>${prod.title}</td>
+        <td>${badge}</td>
         <td>
             <div class="input-group mb-3">
-                <button class="btn btn-outline-secondary" type="button" onclick="changeQty(${index}, 'dec')">-</button>
-                <input type="text" class="form-control" value="${prod.qty}">
-                <button class="btn btn-outline-secondary" type="button" onclick="changeQty(${index}, 'inc')">+</button>
+                <button class="btn btn-outline-secondary" type="button" ${disableBtn} onclick="changeQty(${index}, 'dec')">-</button>
+                <input type="text" class="form-control" value="${prod.qty}" ${disableBtn}>
+                <button class="btn btn-outline-secondary" type="button" ${disableBtn} onclick="changeQty(${index}, 'inc')">+</button>
             </div>
         </td>
         <td>${prod.price.toFixed(2)}</td>
         <td>${(prod.qty * prod.price).toFixed(2)}</td>
-        <td>
-            <button type="button" class="btn btn-info btn-sm" onclick='editProd(${index})'>Edit</button>
-            <button type="button" class="btn btn-danger btn-sm" onclick='deleteProd(${index}, "${prod.title}")'>Remove</button>
+        <td>`
+            if(!prod.isBuy){
+                tbody += `
+                    <button type="button" class="btn btn-info btn-sm" onclick='editProd(${index})'>Edit</button>
+                    <button type="button" class="btn btn-warning btn-sm" onclick='buyProd(${index}, "${prod.title}")'>Buy</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick='deleteProd(${index}, "${prod.title}")'>Remove</button>`
+            }
+            tbody += `
         </td>
         </tr>`
     });
@@ -143,6 +156,12 @@ function editProd(index){
     _el(`prod_title`).value = prod.title;
     _el(`prod_qty`).valueAsNumber = prod.qty;
     _el(`prod_price`).value = prod.price; 
+};
+
+function buyProd(index, title){
+    CART[index].isBuy = true;
+    productList();
+    toast.success(`${title} is bought`);
 }
 
 function deleteProd(index, title){
@@ -194,3 +213,4 @@ function calcDisc(){
     }
     return 0;
 }
+
