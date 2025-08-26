@@ -1,3 +1,4 @@
+// Task 1
 const playList = [
     {
         author: "LED ZEPPELIN",
@@ -48,6 +49,7 @@ playList.forEach((elem) => {
     ol.append(li);
 });
 
+// Task 2
 const btnOpen = document.createElement('button');
 btnOpen.innerText = 'Відкрити';
 document.body.append(btnOpen);
@@ -66,3 +68,32 @@ btnOpen.onclick = function(){
     };
 };
 
+// Task 3
+const trafficLight = document.createElement('div');
+trafficLight.className = 'traffic-light';
+document.body.prepend(trafficLight);
+const redLight = document.createElement('div');
+redLight.classList = 'red lights active-light';
+trafficLight.append(redLight);
+const yellowLight = document.createElement('div');
+yellowLight.classList = 'yellow lights';
+trafficLight.append(yellowLight);
+const greenLight = document.createElement('div');
+greenLight.classList = 'green lights';
+trafficLight.append(greenLight);
+const changeColorBtn = document.createElement('button');
+changeColorBtn.innerText = 'Змінити колір';
+trafficLight.after(changeColorBtn);
+
+changeColorBtn.onclick = function(){
+    if(redLight.classList.contains('active-light')){
+        redLight.classList.remove('active-light');
+        yellowLight.classList.add('active-light');
+    }else if(yellowLight.classList.contains('active-light')){
+        yellowLight.classList.remove('active-light');
+        greenLight.classList.add('active-light');
+    }else if(greenLight.classList.contains('active-light')){
+        greenLight.classList.remove('active-light');
+        redLight.classList.add('active-light');
+    };
+};

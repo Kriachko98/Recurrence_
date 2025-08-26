@@ -1,5 +1,6 @@
 "use strict";
 
+// Task 1
 var playList = [{
   author: "LED ZEPPELIN",
   song: "STAIRWAY TO HEAVEN"
@@ -36,7 +37,8 @@ playList.forEach(function (elem) {
   var li = liMaster.cloneNode();
   li.innerText = "".concat(elem.author, " - ").concat(elem.song);
   ol.append(li);
-});
+}); // Task 2
+
 var btnOpen = document.createElement('button');
 btnOpen.innerText = 'Відкрити';
 document.body.append(btnOpen);
@@ -55,4 +57,36 @@ btnOpen.onclick = function () {
   btnClose.onclick = function () {
     btnClose.closest('.modal-wrap').remove();
   };
+}; // Task 3
+
+
+var trafficLight = document.createElement('div');
+trafficLight.className = 'traffic-light';
+document.body.prepend(trafficLight);
+var redLight = document.createElement('div');
+redLight.classList = 'red lights active-light';
+trafficLight.append(redLight);
+var yellowLight = document.createElement('div');
+yellowLight.classList = 'yellow lights';
+trafficLight.append(yellowLight);
+var greenLight = document.createElement('div');
+greenLight.classList = 'green lights';
+trafficLight.append(greenLight);
+var changeColorBtn = document.createElement('button');
+changeColorBtn.innerText = 'Змінити колір';
+trafficLight.after(changeColorBtn);
+
+changeColorBtn.onclick = function () {
+  if (redLight.classList.contains('active-light')) {
+    redLight.classList.remove('active-light');
+    yellowLight.classList.add('active-light');
+  } else if (yellowLight.classList.contains('active-light')) {
+    yellowLight.classList.remove('active-light');
+    greenLight.classList.add('active-light');
+  } else if (greenLight.classList.contains('active-light')) {
+    greenLight.classList.remove('active-light');
+    redLight.classList.add('active-light');
+  }
+
+  ;
 };
