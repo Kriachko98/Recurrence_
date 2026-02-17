@@ -1,6 +1,6 @@
 @import 'fonts';
 @import 'style';
-@import 'join-section';
+@import 'join-section'; 
 
 // First screen
 .first-screen-section {
@@ -49,6 +49,31 @@
                 background: #CDA274;
                 border-radius: 18px;
                 box-shadow: 0 10px 20px 0 rgba(192, 192, 192, 0.35);
+                padding-right: 25px;
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 15px;
+                    border-bottom: 2px solid white;
+                    top: 37px;
+                    right: 49px;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    border-bottom: 2px solid white;
+                    border-right: 2px solid white;
+                    border-bottom-right-radius: 10%;
+                    transform: rotate(-45deg);
+                    top: 33px;
+                    right: 49px;
+                }
+                &:hover {
+                    background: #8d6e4e;
+                }
             }
         }
     }
