@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-weight: 400;
+}
+
 ul, ol {
     list-style: none;
 }
@@ -91,7 +95,6 @@ header {
             color: #4D5053;
             font-family: 'Jost';
             font-size: 1.375rem;
-            font-weight: 400;
             line-height: 150%; /* 2.0625rem */
             letter-spacing: 0.01375rem;
             margin-bottom: 31px;
@@ -132,7 +135,6 @@ header {
                 color: #4D5053;
                 font-family: 'Jost';
                 font-size: 1.375rem;
-                font-weight: 400;
                 line-height: 300%; /* 4.125rem */
                 letter-spacing: 0.01375rem;
                 &:hover {
@@ -162,7 +164,6 @@ header {
                 color: #4D5053;
                 font-family: 'Jost';
                 font-size: 1.375rem;
-                font-weight: 400;
                 line-height: 150%; /* 2.0625rem */
                 letter-spacing: 0.01375rem;
                 margin-bottom: 14px;
@@ -172,7 +173,6 @@ header {
                     color: #4D5053;
                     font-family: 'Jost';
                     font-size: 1.375rem;
-                    font-weight: 400;
                     line-height: 300%; /* 4.125rem */
                     letter-spacing: 0.01375rem;
                     &:hover {
@@ -187,7 +187,6 @@ header {
     color: #4D5053;
     font-family: 'Jost';
     font-size: 1.375rem;
-    font-weight: 400;
     line-height: 150%; /* 2.0625rem */
     letter-spacing: 0.01375rem;
     width: min(90%, 229px);
