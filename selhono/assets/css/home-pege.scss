@@ -145,11 +145,15 @@
 
 // Creating art
 .art-flex {
-    display: flex;
     position: relative;
     color: #FFF;
+    margin-bottom: 194px;
     .art-left {
         background-color: #32829c;
+        background-image: url(../img/creating-art-left.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: -200px 0;
         width: min(70%, 733px);
         border-right: 80px solid white;
         border-top-right-radius: 250px;
@@ -267,7 +271,11 @@
     }
     .art-right {
         background-color: bisque;
-        width: 100%;
+        background-image: url(../img/creating-art-right.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 78%;
+        margin-left: auto;
         min-height: 700px;
     }
 }
