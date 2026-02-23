@@ -57,6 +57,7 @@ header {
     left: 0;
     top: 0;
     background-color: rgb(255, 255, 255,);
+    z-index: 1000;
     .header-wrap {
         display: flex;
         justify-content: space-between;
