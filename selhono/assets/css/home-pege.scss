@@ -3,6 +3,23 @@
 @import 'feedback-section';
 @import 'join-section'; 
 
+h2 {
+    color: #292F36;
+    text-align: center;
+    font-family: 'DM Serif Display';
+    font-size: 3.75rem;
+    font-weight: 400;
+    line-height: 125%; /* 4.6875rem */
+    letter-spacing: 0.075rem;
+}
+h5 {
+    color: #292F36;
+    font-family: 'DM Serif Display';
+    font-size: 1.5625rem;
+    font-weight: 400;
+    line-height: 125%; /* 1.95313rem */
+}
+
 // First screen
 .first-screen-section {
     margin: 258px 0 95px;
@@ -88,12 +105,7 @@
     .step-wrap {
         width: min(30%, 358px);
         h5 {
-            color: #292F36;
             text-align: center;
-            font-family: 'DM Serif Display';
-            font-size: 1.5625rem;
-            font-weight: 400;
-            line-height: 125%; /* 1.95313rem */
             margin-bottom: 20px;
         }
         p {
@@ -285,13 +297,6 @@
 .projects-section {
     margin-bottom: 177px;
     h2 {
-        color: #292F36;
-        text-align: center;
-        font-family: 'DM Serif Display';
-        font-size: 3.75rem;
-        font-weight: 400;
-        line-height: 125%; /* 4.6875rem */
-        letter-spacing: 0.075rem;
         margin-bottom: 8px;
     }
     p {
@@ -359,6 +364,106 @@
                 a {
                     width: 100%;
                     height: 100%;
+                }
+            }
+        }
+    }
+}
+
+// Articles & News
+.news-section {
+    margin-bottom: 119px;
+    h2 {
+        margin-bottom: 12px;
+    }
+    p {
+        width: min(90%, 811px);
+        margin: 0 auto 129px;
+        color: #4D5053;
+        text-align: center;
+        font-family: 'Jost';
+        font-size: 1.75rem;
+        line-height: 150%; /* 2.625rem */
+        letter-spacing: 0.0175rem;
+    }
+    .news-wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        .news-card {
+            width: min(90%, 384px);
+            padding: 21px;
+            border-radius: 62px;
+            border: 1px solid #E7E7E7;
+            background-color: transparent;
+            position: relative;
+            &:hover {
+                background-color: #F4F0EC;
+            }
+            .news-img {
+                margin-bottom: 21px;
+                img {
+                    border-top-right-radius: 45px;
+                    border-top-left-radius: 45px;
+                }
+            }
+            .small-info {
+                border-radius: 8px 8px 8px 0;
+                background: rgba(0, 0, 0, 0.50);
+                padding: 8px 0 8px 11px;
+                color: #FFF;
+                font-family: 'Jost';
+                font-size: 1rem;
+                line-height: 150%; /* 1.5rem */
+                letter-spacing: 0.01rem;
+                position: absolute;
+                width: 124px;
+                height: 41px;
+                top: 253px;
+                left: 41px;
+                z-index: 1;
+            }
+            h5 {
+                letter-spacing: 0.03125rem;
+                margin-bottom: 30px;
+            }
+            .news-footer {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 16px;
+                .date {
+                    color: #4D5053;
+                    font-family: 'Jost';
+                    font-size: 1rem;
+                    line-height: 150%; /* 1.5rem */
+                    letter-spacing: 0.01rem;
+                    margin-top: 16px;
+                }
+                .link {
+                    width: 52px;
+                    height: 52px;
+                    background-color: #D8A876;
+                    position: relative;
+                    border-radius: 50%;
+                    &::before {
+                        content: '';
+                        width: 10px;
+                        height: 10px;
+                        border-right: 2px solid white;
+                        border-bottom: 2px solid white;
+                        border-bottom-right-radius: 10%;
+                        transform: rotate(-45deg);
+                        position: absolute;
+                        top: 21px;
+                        left: 19px;
+                    }
+                    &:hover {
+                        background-color: #C76904;
+                    }
+                    a {
+                        width: 100%;
+                        height: 100%;
+                    }
                 }
             }
         }
