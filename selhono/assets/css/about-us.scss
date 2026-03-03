@@ -1,3 +1,60 @@
 @import 'fonts';
 @import 'style';
 @import 'feedback-section';
+
+// Main banner section
+.about-us-section {
+    margin-top: 170px;
+    .banner-wrap {
+        background-color: #372410;
+        margin-bottom: 133px;
+        h1 {
+            color: #FFF;
+            text-align: center;
+            text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            font-family: 'DM Serif Display';
+            font-size: 4.375rem;
+            font-weight: 400;
+            line-height: 125%; /* 5.46875rem */
+            padding: 188px 0 80px;
+        }
+    }
+    .owner-comment {
+        width: min(90%, 751px);
+        margin: 0 auto 134px;
+        position: relative;
+        &::before {
+            content: '';
+            height: 205px;
+            position: absolute;
+            border-right: 2px solid black;
+            top: 0;
+            left: 0;
+        }
+        &::after {
+            content: '';
+            height: 205px;
+            position: absolute;
+            border-right: 2px solid black;
+            top: 0;
+            right: 0;
+        }
+        p {
+            color: #292F36;
+            text-align: center;
+            font-family: 'DM Serif Text';
+            font-size: 2.1875rem;
+            line-height: 125%; /* 2.73438rem */
+            letter-spacing: 0.04375rem;
+            margin: 0 auto 34px;
+        }
+        .owner-name {
+            color: #4D5053;
+            text-align: center;
+            font-family: 'Jost';
+            font-size: 1.5625rem;
+            line-height: 150%; /* 2.34375rem */
+            letter-spacing: 0.01563rem;
+        }
+    }
+}
