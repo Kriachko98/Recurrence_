@@ -123,20 +123,28 @@
         <!-- Productive talk form -->
         <div class="productive-wrap container">
             <h2>Creative project? Let's have a productive talk.</h2>
-            <form-wrap> 
-                <!-- TODO telegram bot form -->
+            <div class="form-wrap">
+                <!-- TODO telegram bot form and validation -->
                 <form action="#" method="post">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name">
-                    <label for="e-mail">Email</label>
-                    <input type="email" id="e-mail" name="e-mail">
-                    <label for="message">Message</label>
-                    <input type="text" id="message" name="message">
+                    <div class="name-email-flex">
+                        <div class="field name-area">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="field email-area">    
+                            <input type="email" id="e-mail" name="e-mail" required>
+                            <label for="e-mail">Email</label>
+                        </div>
+                    </div>
+                    <div class="field text-area">    
+                        <input type="text" id="message" name="message" required>
+                        <label for="message">Message</label>
+                    </div>
                     <div class="btn-wrap">
                         <button class="text-capitalize">Send now</button>
                     </div>
                 </form>
-            </form-wrap>
+            </div>
         </div>
     </main>
     <!-- Footer -->
