@@ -24,3 +24,67 @@
         line-height: 125%; /* 5.46875rem */
     }
 }
+
+// Services steps
+.services-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 88px 42px;
+    margin-bottom: 120px;
+    .step-card {
+        width: min(90%, 358px);
+        .step-title {
+            color: #292F36;
+            text-align: center;
+            font-family: 'DM Serif Display';
+            font-size: 1.5625rem;
+            line-height: 125%; /* 1.95313rem */
+            margin-bottom: 20px;
+        }
+        p {
+            color: #000;
+            text-align: center;
+            font-family: 'Jost';
+            font-size: 1.375rem;
+            line-height: 150%; /* 2.0625rem */
+            letter-spacing: 0.01375rem;
+            margin-bottom: 52px;
+        }
+        .step-link {
+            text-align: center;
+            padding-right: 27px;
+            position: relative;
+            a {
+                color: #000;
+                font-family: 'Jost';
+                font-size: 1.125rem;
+                font-weight: 600;
+                line-height: 125%; /* 1.40625rem */
+                letter-spacing: 0.0225rem;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 15px;
+                    border-bottom: 2px solid black;
+                    top: 12px;
+                    right: 115px;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    border-right: 2px solid black;
+                    border-bottom: 2px solid black;
+                    border-bottom-right-radius: 10%;
+                    transform: rotate(-45deg);
+                    top: 7.9px;
+                    right: 116px;
+                }
+                &:hover {
+                    color: #C76904;
+                }
+            }
+        }
+    }
+}
