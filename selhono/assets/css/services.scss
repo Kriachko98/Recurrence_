@@ -13,7 +13,7 @@
     background-repeat: no-repeat;
     background-size: 120% 100%;
     background-position: -160px 0;
-    margin-bottom: 120px;
+    margin-bottom: 193px;
     h1 {
         color: #FFF;
         text-align: center;
@@ -30,7 +30,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 88px 42px;
-    margin-bottom: 120px;
+    margin-bottom: 193px;
     .step-card {
         width: min(90%, 358px);
         .step-title {
@@ -83,6 +83,82 @@
                 }
                 &:hover {
                     color: #C76904;
+                }
+            }
+        }
+    }
+}
+
+// How We Work
+.how-we-work-section {
+    h2 {
+        color: #363B41;
+        text-align: center;
+        font-family: 'DM Serif Display';
+        font-size: 3.125rem;
+        font-weight: 400;
+        line-height: 125%; /* 3.90625rem */
+    }
+    p {
+        width: min(100%, 802px);
+        color: #4D5053;
+        text-align: center;
+        font-family: 'Jost';
+        font-size: 1.375rem;
+        line-height: 150%; /* 2.0625rem */
+        letter-spacing: 0.01375rem;
+        margin: 0 auto 156px;
+    }
+    .working-steps {
+        .step-card {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            .img-wrap {
+                img {
+                    width: 625px;
+                    height: 485px;
+                    border-radius: 0 300px 0 400px;
+                }
+            }
+            .info-wrap {
+                width: min(50%, 456px);
+                .number {
+                    color: #C76904;
+                    font-family: 'DM Serif Display';
+                    font-size: 5.625rem;
+                    line-height: 150%; /* 8.4375rem */
+                    letter-spacing: 0.05625rem;
+                    text-align: right;
+                    margin-bottom: 151px;
+                }
+                .step-title {
+                    color: #292F36;
+                    font-family: 'DM Serif Display';
+                    font-size: 2.1875rem;
+                    line-height: 125%; /* 2.73438rem */
+                    margin-bottom: 11px;
+                }
+                p {
+                    color: #4D5053;
+                    font-family: 'Jost';
+                    text-align: left;
+                    font-size: 1.375rem;
+                    line-height: 150%; /* 2.0625rem */
+                    letter-spacing: 0.01375rem;
+                }
+            }
+        }
+        .flex-reverse {
+            flex-direction: row-reverse;
+            .img-wrap {
+                img {
+                    border-radius: 300px 0 400px 0;
+                }
+            }
+            .info-wrap {
+                .number {
+                    text-align: left;
                 }
             }
         }
