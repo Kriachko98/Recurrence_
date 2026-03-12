@@ -56,16 +56,12 @@
             }
         }
     }
-    .list-name a {
+    .list-name {
         color: #292F36;
         font-family: 'DM Serif Display';
         font-size: 1.5625rem;
-        font-style: normal;
         line-height: 125%; /* 1.95313rem */
         margin-bottom: 9px;
-        &:hover {
-            color: #C76904;
-        }
     }
     .contact {
         width: min(30%, 258px);
