@@ -21,3 +21,99 @@
         line-height: 125%; /* 5.46875rem */
     }
 }
+
+// Plans
+.plan-section {
+    margin-bottom: 139px;
+    .plan-flex {
+        display: flex;
+        justify-content: space-between;
+        .plan-card {
+            width: min(50%, 594px);
+            padding: 64px;
+            text-align: center;
+            &:hover {
+                .plan-price span {
+                    color: #CDA274;
+                }
+            }
+            h5 {
+                color: #292F36;
+                font-family: 'DM Serif Display';
+                font-size: 1.5625rem;
+                font-weight: 400;
+                line-height: 150%; /* 2.34375rem */
+                letter-spacing: 0.01563rem;
+            }
+            .plan-price {
+                color: #292F36;
+                font-family: "DM Serif Display";
+                font-size: 1.5625rem;
+                line-height: 150%; /* 2.34375rem */
+                letter-spacing: 0.01563rem;
+                margin-bottom: 65px;
+                span {
+                    color: #292F36;
+                    font-family: 'DM Serif Display';
+                    font-size: 5.3125rem;
+                    line-height: 150%;
+                    letter-spacing: 0.05313rem;
+                }
+            }
+            ul {
+                margin-bottom: 28px;
+                li {
+                    color: #4D5053;
+                    font-family: 'Jost';
+                    font-size: 1.25rem;
+                    line-height: 250%; /* 3.125rem */
+                    letter-spacing: 0.0125rem;
+                }
+            }
+            .btn-wrap {
+                margin-inline: auto;
+                width: 220px;
+                height: 75px;
+                button {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 18px;
+                    background: #292F36;
+                    box-shadow: 0 10px 20px 0 rgba(192, 192, 192, 0.35);
+                    color: #FFF;
+                    font-family: 'Jost';
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    line-height: 125%; /* 1.40625rem */
+                    letter-spacing: 0.0225rem;
+                    padding-right: 20px;
+                    position: relative;
+                    &::before {
+                        content: '';
+                        width: 11px;
+                        height: 11px;
+                        border-right: 2px solid #fff;;
+                        border-bottom: 2px solid #fff;;
+                        border-bottom-right-radius: 10%;
+                        transform: rotate(-45deg);
+                        position: absolute;
+                        top: 32px;
+                        right: 50px;
+                    }
+                    &::after {
+                        content: '';
+                        width: 17px;
+                        border-bottom: 2px solid #fff;;
+                        position: absolute;
+                        top: 37px;
+                        right: 49px;
+                    }
+                    &:hover {
+                        background-color: #CDA274;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
