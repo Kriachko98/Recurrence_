@@ -351,6 +351,9 @@ h5 {
                 height: 70px;
                 background-color: #D8A876;
                 border-radius: 50%;
+                &:hover {
+                    background-color: #9c662c;
+                }
                 &::before {
                     content: '';
                     width: 12px;
