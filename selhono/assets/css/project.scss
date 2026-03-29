@@ -56,3 +56,19 @@
         }
     }
 }
+
+.room-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 38px 50px;
+    .room-card {
+        .card-img {
+            width: min(100%, 580px);
+            height: 700px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
