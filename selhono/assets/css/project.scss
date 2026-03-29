@@ -24,7 +24,6 @@
 
 // Profect content
 .project-wrap {
-    position: relative;
     .radio-wrap {
         width: min(90%, 894px);
         margin-inline: auto;
@@ -118,4 +117,8 @@
             }
         }
     }
+}
+
+.displayNone {
+    display: none;
 }
