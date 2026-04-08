@@ -2,3 +2,14 @@
 @import 'style';
 @import 'header';
 @import 'footer';
+
+// Banner
+.banner-wrap {
+    margin: 170px 0 76px;
+    background-color: #035c03;
+    height: 356px;
+    background-image: url(../img/contact-banner.jpg);
+    background-repeat: no-repeat;
+    background-size: 125% 100%;
+    background-position-x: -180px;
+}
