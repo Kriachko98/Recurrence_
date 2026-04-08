@@ -36,19 +36,52 @@
                 li {
                     margin-bottom: 52px;
                     a {
-                        padding-left: 67px;
+                        padding: 12px 0 10px 67px;
                         color: #4D5053;
                         font-family: 'Jost';
                         font-size: 1.25rem;
                         line-height: 150%; /* 1.875rem */
                         letter-spacing: 0.0125rem;
+                        &:hover {
+                            color: #CDA274;
+                        }
+                    }
+                    .link-before {
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            content: '';
+                            width: 52px;
+                            height: 52px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                        }
+                    }
+                    .mail-link {
+                        &::before {
+                            background-image: url(../img/mail-icon.svg);
+                        }
+                    }
+                    .phone-link {
+                        &::before {
+                            background-image: url(../img/phone-contact-icon.svg);
+                        }
+                    }
+                    .global-link {
+                        &::before {
+                            background-image: url(../img/global-icon.svg);
+                        }
                     }
                     .links-social {
                         display: flex;
                         gap: 35px;
                         align-items: center;
+                        margin-left: 15px;
                         li {
                             a {
+                                padding: 0;
                                 width: 18px;
                                 &:hover {
                                     opacity: .5;
