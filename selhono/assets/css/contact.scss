@@ -175,3 +175,59 @@
         }
     }
 }
+
+// Map
+.map-wrap {
+    width: min(90%, 1200px);
+    height: 500px; 
+    margin: 0 auto 100px;
+    border-radius: 65px;
+    background-color: rgb(54, 53, 53);
+    // aspect-ratio: 15/4;
+    position: relative;
+    .map-link {
+        position: relative;
+        display: block;
+        &:hover {
+            span {
+                opacity: 1;
+            }
+        }
+        &::before {
+            content: '';
+            width: 38px;
+            height: 56px;
+            position: absolute;
+            background-image: url(../img/map-point.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            top: 220px;
+            left: 300px;
+        }
+        img {
+            border-radius: 65px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba($color: #000000, $alpha: .5);
+            color: white;
+            position: absolute;
+            border-radius: 65px;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            font-size: 1.5rem;
+            font-weight: 500;
+            opacity: 0;
+            font-family: 'Jost';
+            transition: all ease .2s;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

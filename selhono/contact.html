@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-title" content="Selhono" />
     <link rel="manifest" href="assets/img/favicon/site.webmanifest" />
     <link rel="stylesheet" href="assets/css/contact.min.css">
+    <link rel="stylesheet" href="assets/plagins/leaflet/leaflet.css">
 </head>
 <body>
     <!-- Header -->
@@ -74,8 +75,11 @@
                 </div>
             </div>
         </section>
-        <div class="map-wrap container">
-            <!-- TODO map -->
+        <div class="map-wrap container" id="map">
+            <a href="#map" class="map-link" onclick="initMap(this)">
+                <img alt="map" src="assets/img/map.jpg"/>
+                <span>Click to interactive map</span>
+            </a>
         </div>
     </main>
         <!-- Footer -->
@@ -127,5 +131,7 @@
             </div>
             <div class="copyright">Copyright © SELHONO </div>
         </footer>
+    <script src="assets/plagins/leaflet/leaflet.js"></script>
+    <script src="assets/js/map.js"></script>
 </body>
 </html>
