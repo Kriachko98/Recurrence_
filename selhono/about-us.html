@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="flex-reverse-wrap">
                     <div class="img-wrap">
-                        <img src="assets/img/what-we-do.jpg" alt="room design">
+                        <img alt="room design" class="lazy" src="data:image/gif;base64,R0lGODlhBAADAIAAAP///wAAACH5BAEAAAEALAAAAAAEAAMAAAIDjI9WADs=" data-src="assets/img/what-we-do.jpg"/>
                     </div>
                     <div class="info-wrap">
                         <h2 class="text-capitalize">What we do</h2>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="flex-wrap">
                     <div class="img-wrap">
-                        <img src="assets/img/the-end-result.jpg" alt="room design">
+                        <img alt="room design" class="lazy" src="data:image/gif;base64,R0lGODlhBAADAIAAAP///wAAACH5BAEAAAEALAAAAAAEAAMAAAIDjI9WADs=" data-src="assets/img/the-end-result.jpg"/>
                     </div>
                     <div class="info-wrap">
                         <h2 class="text-capitalize">The end result</h2>
@@ -84,7 +84,7 @@
                     <div class="feedback-wrap">
                         <div class="person-info">
                             <div class="avatar">
-                                <img src="assets/img/Daryna-feedback.jpg" alt="Daryna">
+                                <img alt="Daryna" class="lazy" src="data:image/gif;base64,R0lGODlhBAADAIAAAP///wAAACH5BAEAAAEALAAAAAAEAAMAAAIDjI9WADs=" data-src="assets/img/Daryna-feedback.jpg"/>
                             </div>
                             <div class="info">
                                 <div class="name">Daryna</div>
@@ -98,7 +98,7 @@
                     <div class="feedback-wrap">
                         <div class="person-info">
                             <div class="avatar">
-                                <img src="assets/img/Raymond-feedback.jpg" alt="Raymond">
+                                <img alt="Raymond" class="lazy" src="data:image/gif;base64,R0lGODlhBAADAIAAAP///wAAACH5BAEAAAEALAAAAAAEAAMAAAIDjI9WADs=" data-src="assets/img/Raymond-feedback.jpg"/>
                             </div>
                             <div class="info">
                                 <div class="name">Raymond Galario</div>
@@ -112,7 +112,7 @@
                     <div class="feedback-wrap">
                         <div class="person-info">
                             <div class="avatar">
-                                <img src="assets/img/Benny-feedback.jpg" alt="Benny">
+                                <img alt="Benny" class="lazy" src="data:image/gif;base64,R0lGODlhBAADAIAAAP///wAAACH5BAEAAAEALAAAAAAEAAMAAAIDjI9WADs=" data-src="assets/img/Benny-feedback.jpg"/>
                             </div>
                             <div class="info">
                                 <div class="name">Benny Roll</div>
@@ -126,6 +126,7 @@
                 </div>
             </div>
         </section>
+
         <!-- Productive talk form -->
         <div class="productive-wrap container">
             <h2>Creative project? Let's have a productive talk.</h2>
@@ -201,6 +202,10 @@
             </div>
         </div>
         <div class="copyright">Copyright © SELHONO </div>
-    </footer>    
+    </footer>
+    <script src="assets/js/lazyload.min.js"></script>
+    <script>
+        var lazyLoadInstance = new LazyLoad()
+    </script>
 </body>
 </html>
