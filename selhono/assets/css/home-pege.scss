@@ -3,7 +3,7 @@
 @import 'header';
 @import 'feedback-section';
 @import 'join-section';
-@import 'footer'; 
+@import 'footer';
 
 h2 {
     color: #292F36;
@@ -323,10 +323,8 @@ h5 {
                 border-top-right-radius: 270px;
                 margin-bottom: 10px;
                 overflow: hidden;
-                img {
-                    width: 100%;
-                    aspect-ratio: 1;
-                }
+                width: 100%;
+                aspect-ratio: 1;
             }
             .room-name {
                 color: #292F36;
