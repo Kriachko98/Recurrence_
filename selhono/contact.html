@@ -77,7 +77,8 @@
         </section>
         <div class="map-wrap container" id="map">
             <a href="#map" class="map-link" onclick="initMap(this)">
-                <img alt="map" src="assets/img/map.jpg"/>
+                <img alt="map" class="lazy" src="data:image/gif;base64,R0lGODlhBAADAIAAAP///wAAACH5BAEAAAEALAAAAAAEAAMAAAIDjI9WADs=" data-src="assets/img/map.jpg"/>
+                <!-- <img alt="map" src="assets/img/map.jpg"/> -->
                 <span>Click to interactive map</span>
             </a>
         </div>
@@ -133,5 +134,9 @@
         </footer>
     <script src="assets/plagins/leaflet/leaflet.js"></script>
     <script src="assets/js/map.js"></script>
+    <script src="assets/js/lazyload.min.js"></script>
+    <script>
+        var lazyLoadInstance = new LazyLoad()
+    </script>
 </body>
 </html>
