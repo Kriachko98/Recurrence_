@@ -165,7 +165,6 @@ h5 {
     margin-bottom: 194px;
     .art-left {
         background-color: #32829c;
-        background-image: url(../img/creating-art-left.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: -200px 0;
@@ -223,6 +222,7 @@ h5 {
                     justify-content: center;
                     img {
                         width: 32px;
+                        height: 32px;
                     }
                 }
             }
@@ -286,7 +286,6 @@ h5 {
     }
     .art-right {
         background-color: bisque;
-        background-image: url(../img/creating-art-right.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         width: 78%;
@@ -471,4 +470,4 @@ h5 {
             }
         }
     }
-}
+} 
