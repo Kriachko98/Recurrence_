@@ -1,9 +1,9 @@
 const cars = [
     {
         id: 645521,
-        img: '/img/2015-bmw-435i-xDrive-coupe.jpg',
+        img: 'assets/img/2015-bmw-435i-xDrive-coupe.jpg',
         brand: 'BMW',
-        model: '435i xDrive Coupe',
+        model: '435i xDrive',
         color: 'blue',
         year: 2015,
         power: 306,
@@ -13,7 +13,7 @@ const cars = [
     },
     {
         id: 940833,
-        img: '/img/2024-bmw-x5-m60i-134-6602d491051b2.jpg',
+        img: 'assets/img/2024-bmw-x5-m60i-134-6602d491051b2.jpg',
         brand: 'BMW',
         model: 'X5 M60i',
         color: 'black',
@@ -25,7 +25,7 @@ const cars = [
     },
     {
         id: 957789,
-        img: '/img/Used-2020-BMW-3-Series-M340i-1647879445.jpg',
+        img: 'assets/img/Used-2020-BMW-3-Series-M340i-1647879445.jpg',
         brand: 'BMW',
         model: 'X3 M340i',
         color: 'blue',
@@ -37,7 +37,7 @@ const cars = [
     },
     {
         id: 635978,
-        img: '/img/ford-kuga-2025.jpg',
+        img: 'assets/img/ford-kuga-2025.jpg',
         brand: 'Ford',
         model: 'Kuga',
         color: 'green',
@@ -49,7 +49,7 @@ const cars = [
     },
     {
         id: 113891,
-        img: '/img/ford-mustang-2015.jpg',
+        img: 'assets/img/ford-mustang-2015.jpg',
         brand: 'Ford',
         model: 'Mustang',
         color: 'red',
@@ -61,7 +61,7 @@ const cars = [
     },
     {
         id: 894781,
-        img: '/img/ford-fiesta-2019.jpg',
+        img: 'assets/img/ford-fiesta-2019.jpg',
         brand: 'Ford',
         model: 'Fiesta',
         color: 'blue',
@@ -73,7 +73,7 @@ const cars = [
     },
     {
         id: 525463,
-        img: '/img/2016-volkswagen-jetta_5170.jpg',
+        img: 'assets/img/2016-volkswagen-jetta_5170.jpg',
         brand: 'Volkswagen',
         model: 'Jetta',
         color: 'white',
@@ -85,7 +85,7 @@ const cars = [
     },
     {
         id: 654796,
-        img: '/img/2026_volkswagen_tiguan_4dr-suv_se_fq_oem_1_1600.jpg',
+        img: 'assets/img/2026_volkswagen_tiguan_4dr-suv_se_fq_oem_1_1600.jpg',
         brand: 'Volkswagen',
         model: 'Tiguan',
         color: 'silver',
@@ -97,7 +97,7 @@ const cars = [
     },
     {
         id: 458823,
-        img: '/img/volkswagen-polo-2025.jpg',
+        img: 'assets/img/volkswagen-polo-2025.jpg',
         brand: 'Volkswagen',
         model: 'Polo',
         color: 'white',
@@ -109,7 +109,7 @@ const cars = [
     },
     {
         id: 623998,
-        img: '/img/skoda-kylaq-2026.jpg',
+        img: 'assets/img/skoda-kylaq-2026.jpg',
         brand: 'Skoda',
         model: 'Kylaq',
         color: 'red',
@@ -121,7 +121,7 @@ const cars = [
     },
     {
         id: 936821,
-        img: '/img/skoda-kodiaq-2024.jpg',
+        img: 'assets/img/skoda-kodiaq-2024.jpg',
         brand: 'Skoda',
         model: 'Kodiaq',
         color: 'silver',
@@ -133,7 +133,7 @@ const cars = [
     },
     {
         id: 653697,
-        img: '/img/skoda-fabia-2025.jpg',
+        img: 'assets/img/skoda-fabia-2025.jpg',
         brand: 'Skoda',
         model: 'Fabia',
         color: 'red',
@@ -145,7 +145,7 @@ const cars = [
     },
     {
         id: 659863,
-        img: '/img/2019-nissan-leaf.jpg',
+        img: 'assets/img/2019-nissan-leaf.jpg',
         brand: 'Nissan',
         model: 'Leaf',
         color: 'silver',
@@ -157,7 +157,7 @@ const cars = [
     },
     {
         id: 552369,
-        img: '/img/nissan-ariya-2024.jpg',
+        img: 'assets/img/nissan-ariya-2024.jpg',
         brand: 'Nissan',
         model: 'Ariya',
         color: 'green',
@@ -169,7 +169,7 @@ const cars = [
     },
     {
         id: 827863,
-        img: '/img/nissan-x-trail-2025.jpg',
+        img: 'assets/img/nissan-x-trail-2025.jpg',
         brand: 'Nissan',
         model: 'X-Trail',
         color: 'black',
@@ -181,7 +181,7 @@ const cars = [
     },
     {
         id: 659124,
-        img: '/img/2024-mercedes-benz-gle450-exterior-109-677eca533ec1f.jpg',
+        img: 'assets/img/2024-mercedes-benz-gle450-exterior-109-677eca533ec1f.jpg',
         brand: 'Mercedes',
         model: 'Gle 450',
         color: 'black',
@@ -192,3 +192,19 @@ const cars = [
         price: 4500000
     }
 ];
+
+const container = document.getElementById('container');
+
+cars.forEach(function (el){
+    const card = document.createElement('div');
+    card.setAttribute('class', 'card-wrap');
+    card.innerHTML=`
+        <div class="img-wrap"><img src="${el.img}" alt="${el.brand}"></div>
+        <h2 class="car-title">${el.brand} ${el.model}</h2>
+        <div class="info">Рік випуску: ${el.year}</div>
+        <div class="info">Потужність двигуна: ${el.power} л.с</div>
+        <div class="info">Тип палива: ${el.fuel ? "Нова" : "Вживана"}</div>
+        <div class="info">Ціна: ${el.price}грн</div>
+    `
+    container.append(card);
+})

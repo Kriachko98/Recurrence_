@@ -2,9 +2,9 @@
 
 var cars = [{
   id: 645521,
-  img: '/img/2015-bmw-435i-xDrive-coupe.jpg',
+  img: 'assets/img/2015-bmw-435i-xDrive-coupe.jpg',
   brand: 'BMW',
-  model: '435i xDrive Coupe',
+  model: '435i xDrive',
   color: 'blue',
   year: 2015,
   power: 306,
@@ -13,7 +13,7 @@ var cars = [{
   price: 958000
 }, {
   id: 940833,
-  img: '/img/2024-bmw-x5-m60i-134-6602d491051b2.jpg',
+  img: 'assets/img/2024-bmw-x5-m60i-134-6602d491051b2.jpg',
   brand: 'BMW',
   model: 'X5 M60i',
   color: 'black',
@@ -24,7 +24,7 @@ var cars = [{
   price: 4500000
 }, {
   id: 957789,
-  img: '/img/Used-2020-BMW-3-Series-M340i-1647879445.jpg',
+  img: 'assets/img/Used-2020-BMW-3-Series-M340i-1647879445.jpg',
   brand: 'BMW',
   model: 'X3 M340i',
   color: 'blue',
@@ -35,7 +35,7 @@ var cars = [{
   price: 1700000
 }, {
   id: 635978,
-  img: '/img/ford-kuga-2025.jpg',
+  img: 'assets/img/ford-kuga-2025.jpg',
   brand: 'Ford',
   model: 'Kuga',
   color: 'green',
@@ -46,7 +46,7 @@ var cars = [{
   price: 1650000
 }, {
   id: 113891,
-  img: '/img/ford-mustang-2015.jpg',
+  img: 'assets/img/ford-mustang-2015.jpg',
   brand: 'Ford',
   model: 'Mustang',
   color: 'red',
@@ -57,7 +57,7 @@ var cars = [{
   price: 728000
 }, {
   id: 894781,
-  img: '/img/ford-fiesta-2019.jpg',
+  img: 'assets/img/ford-fiesta-2019.jpg',
   brand: 'Ford',
   model: 'Fiesta',
   color: 'blue',
@@ -68,7 +68,7 @@ var cars = [{
   price: 550000
 }, {
   id: 525463,
-  img: '/img/2016-volkswagen-jetta_5170.jpg',
+  img: 'assets/img/2016-volkswagen-jetta_5170.jpg',
   brand: 'Volkswagen',
   model: 'Jetta',
   color: 'white',
@@ -79,7 +79,7 @@ var cars = [{
   price: 850000
 }, {
   id: 654796,
-  img: '/img/2026_volkswagen_tiguan_4dr-suv_se_fq_oem_1_1600.jpg',
+  img: 'assets/img/2026_volkswagen_tiguan_4dr-suv_se_fq_oem_1_1600.jpg',
   brand: 'Volkswagen',
   model: 'Tiguan',
   color: 'silver',
@@ -90,7 +90,7 @@ var cars = [{
   price: 2550000
 }, {
   id: 458823,
-  img: '/img/volkswagen-polo-2025.jpg',
+  img: 'assets/img/volkswagen-polo-2025.jpg',
   brand: 'Volkswagen',
   model: 'Polo',
   color: 'white',
@@ -101,7 +101,7 @@ var cars = [{
   price: 980000
 }, {
   id: 623998,
-  img: '/img/skoda-kylaq-2026.jpg',
+  img: 'assets/img/skoda-kylaq-2026.jpg',
   brand: 'Skoda',
   model: 'Kylaq',
   color: 'red',
@@ -112,7 +112,7 @@ var cars = [{
   price: 1400000
 }, {
   id: 936821,
-  img: '/img/skoda-kodiaq-2024.jpg',
+  img: 'assets/img/skoda-kodiaq-2024.jpg',
   brand: 'Skoda',
   model: 'Kodiaq',
   color: 'silver',
@@ -123,7 +123,7 @@ var cars = [{
   price: 2800000
 }, {
   id: 653697,
-  img: '/img/skoda-fabia-2025.jpg',
+  img: 'assets/img/skoda-fabia-2025.jpg',
   brand: 'Skoda',
   model: 'Fabia',
   color: 'red',
@@ -134,7 +134,7 @@ var cars = [{
   price: 1150000
 }, {
   id: 659863,
-  img: '/img/2019-nissan-leaf.jpg',
+  img: 'assets/img/2019-nissan-leaf.jpg',
   brand: 'Nissan',
   model: 'Leaf',
   color: 'silver',
@@ -145,7 +145,7 @@ var cars = [{
   price: 525000
 }, {
   id: 552369,
-  img: '/img/nissan-ariya-2024.jpg',
+  img: 'assets/img/nissan-ariya-2024.jpg',
   brand: 'Nissan',
   model: 'Ariya',
   color: 'green',
@@ -156,7 +156,7 @@ var cars = [{
   price: 1650000
 }, {
   id: 827863,
-  img: '/img/nissan-x-trail-2025.jpg',
+  img: 'assets/img/nissan-x-trail-2025.jpg',
   brand: 'Nissan',
   model: 'X-Trail',
   color: 'black',
@@ -167,7 +167,7 @@ var cars = [{
   price: 1840000
 }, {
   id: 659124,
-  img: '/img/2024-mercedes-benz-gle450-exterior-109-677eca533ec1f.jpg',
+  img: 'assets/img/2024-mercedes-benz-gle450-exterior-109-677eca533ec1f.jpg',
   brand: 'Mercedes',
   model: 'Gle 450',
   color: 'black',
@@ -177,3 +177,10 @@ var cars = [{
   fuel: 'diesel',
   price: 4500000
 }];
+var container = document.getElementById('container');
+cars.forEach(function (el) {
+  var card = document.createElement('div');
+  card.setAttribute('class', 'card-wrap');
+  card.innerHTML = "\n        <div class=\"img-wrap\"><img src=\"".concat(el.img, "\" alt=\"").concat(el.brand, "\"></div>\n        <h2 class=\"car-title\">").concat(el.brand, " ").concat(el.model, "</h2>\n        <div class=\"info\">\u0420\u0456\u043A \u0432\u0438\u043F\u0443\u0441\u043A\u0443: ").concat(el.year, "</div>\n        <div class=\"info\">\u041F\u043E\u0442\u0443\u0436\u043D\u0456\u0441\u0442\u044C \u0434\u0432\u0438\u0433\u0443\u043D\u0430: ").concat(el.power, " \u043B.\u0441</div>\n        <div class=\"info\">\u0422\u0438\u043F \u043F\u0430\u043B\u0438\u0432\u0430: ").concat(el.fuel ? "Нова" : "Вживана", "</div>\n        <div class=\"info\">\u0426\u0456\u043D\u0430: ").concat(el.price, "\u0433\u0440\u043D</div>\n    ");
+  container.append(card);
+});
