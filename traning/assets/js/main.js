@@ -204,7 +204,7 @@ cars.forEach(function (el){
         <div class="info">Рік випуску: ${el.year}</div>
         <div class="info">Потужність двигуна: ${el.power} л.с</div>
         <div class="info">Тип палива: ${el.fuel ? "Нова" : "Вживана"}</div>
-        <div class="info">Ціна: ${el.price}грн</div>
+        <div class="info">Ціна: ${el.price.toLocaleString('uk-UA')} грн</div>
     `
     container.append(card);
 })
