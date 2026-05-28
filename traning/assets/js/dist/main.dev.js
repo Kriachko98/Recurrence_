@@ -178,9 +178,47 @@ var cars = [{
   price: 4500000
 }];
 var container = document.getElementById('container');
-cars.forEach(function (el) {
-  var card = document.createElement('div');
-  card.setAttribute('class', 'card-wrap');
-  card.innerHTML = "\n        <div class=\"img-wrap\"><img src=\"".concat(el.img, "\" alt=\"").concat(el.brand, "\"></div>\n        <h2 class=\"car-title\">").concat(el.brand, " ").concat(el.model, "</h2>\n        <div class=\"info\">\u0420\u0456\u043A \u0432\u0438\u043F\u0443\u0441\u043A\u0443: ").concat(el.year, "</div>\n        <div class=\"info\">\u041F\u043E\u0442\u0443\u0436\u043D\u0456\u0441\u0442\u044C \u0434\u0432\u0438\u0433\u0443\u043D\u0430: ").concat(el.power, " \u043B.\u0441</div>\n        <div class=\"info\">\u0422\u0438\u043F \u043F\u0430\u043B\u0438\u0432\u0430: ").concat(el.fuel === 'diesel' ? 'Дизель' : el.fuel === 'petrol' ? 'Бензин' : 'Електро', "</div>\n        <div class=\"info\">\u0421\u0442\u0430\u043D \u0430\u0432\u0442\u0456\u0432\u043A\u0438: ").concat(el.isNew ? "Нова" : "Вживана", "</div>\n        <div class=\"info\">\u0426\u0456\u043D\u0430: ").concat(el.price.toLocaleString('uk-UA'), " \u0433\u0440\u043D</div>\n    ");
-  container.append(card);
+
+function renderCards() {
+  container.innerHTML = "";
+  cars.forEach(function (el) {
+    var card = document.createElement('div');
+    card.setAttribute('class', 'card-wrap');
+    card.innerHTML = "\n            <div class=\"img-wrap\"><img src=\"".concat(el.img, "\" alt=\"").concat(el.brand, "\"></div>\n            <h2 class=\"car-title\">").concat(el.brand, " ").concat(el.model, "</h2>\n            <div class=\"info\">\u0420\u0456\u043A \u0432\u0438\u043F\u0443\u0441\u043A\u0443: ").concat(el.year, "</div>\n            <div class=\"info\">\u041F\u043E\u0442\u0443\u0436\u043D\u0456\u0441\u0442\u044C \u0434\u0432\u0438\u0433\u0443\u043D\u0430: ").concat(el.power, " \u043B.\u0441</div>\n            <div class=\"info\">\u0422\u0438\u043F \u043F\u0430\u043B\u0438\u0432\u0430: ").concat(el.fuel === 'diesel' ? 'Дизель' : el.fuel === 'petrol' ? 'Бензин' : 'Електро', "</div>\n            <div class=\"info\">\u0421\u0442\u0430\u043D \u0430\u0432\u0442\u0456\u0432\u043A\u0438: ").concat(el.isNew ? "Нова" : "Вживана", "</div>\n            <div class=\"info\">\u0426\u0456\u043D\u0430: ").concat(el.price.toLocaleString('uk-UA'), " \u0433\u0440\u043D</div>\n        ");
+    container.append(card);
+  });
+}
+
+renderCards(); // Сортування
+
+var sorting = document.getElementById('sorting');
+sorting.addEventListener('change', function () {
+  switch (sorting.value) {
+    case 'price-inc':
+      cars.sort(function (a, b) {
+        return a.price - b.price;
+      });
+      break;
+
+    case 'price-dec':
+      cars.sort(function (a, b) {
+        return b.price - a.price;
+      });
+      break;
+
+    case 'year-new':
+      cars.sort(function (a, b) {
+        return b.year - a.year;
+      });
+      break;
+
+    case 'year-old':
+      cars.sort(function (a, b) {
+        return a.year - b.year;
+      });
+      break;
+  }
+
+  ;
+  renderCards();
 });

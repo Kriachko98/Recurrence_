@@ -195,17 +195,45 @@ const cars = [
 
 const container = document.getElementById('container');
 
-cars.forEach(function (el){
-    const card = document.createElement('div');
-    card.setAttribute('class', 'card-wrap');
-    card.innerHTML=`
-        <div class="img-wrap"><img src="${el.img}" alt="${el.brand}"></div>
-        <h2 class="car-title">${el.brand} ${el.model}</h2>
-        <div class="info">Рік випуску: ${el.year}</div>
-        <div class="info">Потужність двигуна: ${el.power} л.с</div>
-        <div class="info">Тип палива: ${el.fuel === 'diesel' ? 'Дизель' : el.fuel === 'petrol' ? 'Бензин' : 'Електро'}</div>
-        <div class="info">Стан автівки: ${el.isNew ? "Нова" : "Вживана"}</div>
-        <div class="info">Ціна: ${el.price.toLocaleString('uk-UA')} грн</div>
-    `
-    container.append(card);
-})
+function renderCards (){
+    container.innerHTML = ``;
+
+    cars.forEach(function (el){
+        const card = document.createElement('div');
+        card.setAttribute('class', 'card-wrap');
+        card.innerHTML=`
+            <div class="img-wrap"><img src="${el.img}" alt="${el.brand}"></div>
+            <h2 class="car-title">${el.brand} ${el.model}</h2>
+            <div class="info">Рік випуску: ${el.year}</div>
+            <div class="info">Потужність двигуна: ${el.power} л.с</div>
+            <div class="info">Тип палива: ${el.fuel === 'diesel' ? 'Дизель' : el.fuel === 'petrol' ? 'Бензин' : 'Електро'}</div>
+            <div class="info">Стан автівки: ${el.isNew ? "Нова" : "Вживана"}</div>
+            <div class="info">Ціна: ${el.price.toLocaleString('uk-UA')} грн</div>
+        `
+        container.append(card);
+    })
+}
+
+renderCards();
+
+
+// Сортування
+const sorting = document.getElementById('sorting');
+sorting.addEventListener('change', function (){
+    switch(sorting.value){
+        case 'price-inc':
+            cars.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-dec':
+            cars.sort((a, b) => b.price - a.price);
+            break;
+        case 'year-new':
+            cars.sort((a, b) => b.year - a.year);
+            break;
+        case 'year-old':
+            cars.sort((a, b) => a.year - b.year);
+            break;
+    };
+
+    renderCards();
+});
