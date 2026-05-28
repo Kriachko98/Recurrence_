@@ -203,7 +203,7 @@ cars.forEach(function (el){
         <h2 class="car-title">${el.brand} ${el.model}</h2>
         <div class="info">Рік випуску: ${el.year}</div>
         <div class="info">Потужність двигуна: ${el.power} л.с</div>
-        <div class="info">Тип палива: ${el.fuel}</div>
+        <div class="info">Тип палива: ${el.fuel === 'diesel' ? 'Дизель' : el.fuel === 'petrol' ? 'Бензин' : 'Електро'}</div>
         <div class="info">Стан автівки: ${el.isNew ? "Нова" : "Вживана"}</div>
         <div class="info">Ціна: ${el.price.toLocaleString('uk-UA')} грн</div>
     `
