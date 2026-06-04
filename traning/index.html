@@ -72,14 +72,25 @@
                         <label class="blue" for="color-blue">Синій</label>
                     </div>
                 </fieldset>
-                <fieldset class="price-filter">
-                    <legend>Оберіть діапазон ціни:</legend>
-                    <div>
-                        Від
-                        <input type="text" id="priceMin"> грн - До
-                        <input type="text" id="priceMax"> грн
-                    </div>
-                </fieldset>
+                <div>
+                    <fieldset class="price-filter">
+                        <legend>Оберіть діапазон ціни:</legend>
+                        <div>
+                            Від
+                            <input type="text" id="priceMin"> грн - До
+                            <input type="text" id="priceMax"> грн
+                        </div>
+                    </fieldset>
+                    <fieldset class="isNew-filter">
+                        <legend>Оберіть стан автівки</legend>
+                        <div>
+                            <input id="newCar" type="radio" name="carState" value="newCar">
+                            <label for="newCar">Нова</label><br>
+                            <input id="usedCar" type="radio" name="carState" value="usedCar">
+                            <label for="usedCar">Вживана</label>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
             <div id="gridWrap" class="grid-wrap"></div>
         </div>
