@@ -1,5 +1,13 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var cars = [{
   id: 645521,
   img: 'assets/img/2015-bmw-435i-xDrive-coupe.jpg',
@@ -179,9 +187,9 @@ var cars = [{
 }];
 var container = document.getElementById('gridWrap');
 
-function renderCards() {
+function renderCards(arr) {
   container.innerHTML = "";
-  cars.forEach(function (el) {
+  arr.forEach(function (el) {
     var card = document.createElement('div');
     card.setAttribute('class', 'card-wrap');
     card.innerHTML = "\n            <div class=\"img-wrap\"><img src=\"".concat(el.img, "\" alt=\"").concat(el.brand, "\"></div>\n            <h2 class=\"car-title\">").concat(el.brand, " ").concat(el.model, "</h2>\n            <div class=\"info\">\u0420\u0456\u043A \u0432\u0438\u043F\u0443\u0441\u043A\u0443: ").concat(el.year, "</div>\n            <div class=\"info\">\u041F\u043E\u0442\u0443\u0436\u043D\u0456\u0441\u0442\u044C \u0434\u0432\u0438\u0433\u0443\u043D\u0430: ").concat(el.power, " \u043B.\u0441</div>\n            <div class=\"info\">\u0422\u0438\u043F \u043F\u0430\u043B\u0438\u0432\u0430: ").concat(el.fuel === 'diesel' ? 'Дизель' : el.fuel === 'petrol' ? 'Бензин' : 'Електро', "</div>\n            <div class=\"info\">\u0421\u0442\u0430\u043D \u0430\u0432\u0442\u0456\u0432\u043A\u0438: ").concat(el.isNew ? "Нова" : "Вживана", "</div>\n            <div class=\"info\">\u0426\u0456\u043D\u0430: ").concat(el.price.toLocaleString('uk-UA'), " \u0433\u0440\u043D</div>\n        ");
@@ -189,7 +197,7 @@ function renderCards() {
   });
 }
 
-renderCards(); // Сортування
+renderCards(cars); // Сортування
 
 var sorting = document.getElementById('sorting');
 sorting.addEventListener('change', function () {
@@ -220,5 +228,45 @@ sorting.addEventListener('change', function () {
   }
 
   ;
-  renderCards();
+  renderCards(cars);
+}); // Фільтрування
+
+var saveFilter = document.getElementById('saveFilter');
+saveFilter.addEventListener('click', function () {
+  // По бренду
+  var checkedBrands = document.querySelectorAll('.model-filter input:checked');
+
+  var selectedBrands = _toConsumableArray(checkedBrands).map(function (el) {
+    return el.name;
+  });
+
+  var filteredCars = cars;
+
+  if (selectedBrands.length > 0) {
+    filteredCars = filteredCars.filter(function (el) {
+      return selectedBrands.includes(el.brand.toLowerCase());
+    });
+  } // По кольору
+
+
+  var checkedColors = document.querySelectorAll('.color-filter input:checked');
+
+  var selectedColors = _toConsumableArray(checkedColors).map(function (el) {
+    return el.name;
+  });
+
+  if (selectedColors.length > 0) {
+    filteredCars = filteredCars.filter(function (el) {
+      return selectedColors.includes(el.color);
+    });
+  } // Нічого не знайдено
+
+
+  if (filteredCars.length === 0) {
+    container.innerHTML = "<h1>\u0417\u0430 \u0412\u0430\u0448\u0438\u043C \u0437\u0430\u043F\u0438\u0442\u043E\u043C \u043D\u0456\u0447\u043E\u0433\u043E \u043D\u0435 \u0437\u043D\u0430\u0439\u0434\u0435\u043D\u043E</h1>";
+    return;
+  }
+
+  console.log(filteredCars);
+  renderCards(filteredCars);
 });

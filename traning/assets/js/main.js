@@ -195,10 +195,10 @@ const cars = [
 
 const container = document.getElementById('gridWrap');
 
-function renderCards (){
+function renderCards (arr){
     container.innerHTML = ``;
 
-    cars.forEach(function (el){
+    arr.forEach(function (el){
         const card = document.createElement('div');
         card.setAttribute('class', 'card-wrap');
         card.innerHTML=`
@@ -214,7 +214,7 @@ function renderCards (){
     })
 }
 
-renderCards();
+renderCards(cars);
 
 
 // Сортування
@@ -235,5 +235,40 @@ sorting.addEventListener('change', function (){
             break;
     };
 
-    renderCards();
+    renderCards(cars);
 });
+
+
+// Фільтрування
+const saveFilter = document.getElementById('saveFilter');
+saveFilter.addEventListener('click', function (){
+    // По бренду
+    const checkedBrands = document.querySelectorAll('.model-filter input:checked');
+    const selectedBrands = [...checkedBrands].map(el => el.name);
+    let filteredCars = cars;
+    
+    if (selectedBrands.length > 0) {
+        filteredCars = filteredCars.filter(el =>
+            selectedBrands.includes(el.brand.toLowerCase())
+        );
+    }
+
+    // По кольору
+    const checkedColors = document.querySelectorAll('.color-filter input:checked');
+    const selectedColors = [...checkedColors].map(el => el.name);
+    if(selectedColors.length > 0){
+        filteredCars = filteredCars.filter(el => 
+            selectedColors.includes(el.color)
+        );
+    }
+
+    // Нічого не знайдено
+    if(filteredCars.length === 0){
+        container.innerHTML = `<h1>За Вашим запитом нічого не знайдено</h1>`;
+        return;
+    }
+
+    console.log(filteredCars);
+    renderCards(filteredCars);
+});
+
