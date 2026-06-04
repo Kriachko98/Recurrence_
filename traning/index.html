@@ -8,15 +8,80 @@
 </head>
 <body>
     <main>
-        <select class="sorting" name="sorting" id="sorting">
-            <option value="">Сортування</option>
-            <option value="price-inc">Ціна: від дешевих</option>
-            <option value="price-dec">Ціна: від дорогих</option>
-            <option value="year-new">Новіші моделі</option>
-            <option value="year-old">Старіші моделі</option>
-        </select>
-        <div id="container" class="grid-wrap container">
-
+        <div class="container">
+            <select class="sorting" name="sorting" id="sorting">
+                <option value="">Сортування</option>
+                <option value="price-inc">Ціна: від дешевих</option>
+                <option value="price-dec">Ціна: від дорогих</option>
+                <option value="year-new">Новіші моделі</option>
+                <option value="year-old">Старіші моделі</option>
+            </select>
+            <button id="filterBtn" class="filter-btn">Фільтр</button>
+            <div class="filter-options flex-wrap">
+                <fieldset class="model-filter">
+                    <legend>Оберіть модель автівки:</legend>
+                    <div>
+                        <input type="checkbox" name="bmw" id="model-bmw">
+                        <label for="model-bmw">BMW</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="ford" id="model-ford">
+                        <label for="model-ford">Ford</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="volkswagen" id="model-volkswagen">
+                        <label for="model-volkswagen">Volkswagen</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="skoda" id="model-skoda">
+                        <label for="model-skoda">Skoda</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="nissan" id="model-nissan">
+                        <label for="model-nissan">Nissan</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="mercedes" id="model-mercedes">
+                        <label for="model-mercedes">Mercedes</label>
+                    </div>
+                </fieldset>
+                <fieldset class="color-filter">
+                    <legend>Оберіть колір автівки:</legend>
+                    <div>
+                        <input type="checkbox" name="red" id="color-red">
+                        <label class="red" for="color-red">Червоний</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="black" id="color-black">
+                        <label class="black" for="color-black">Чорний</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="white" id="color-white">
+                        <label class="white" for="color-white">Білий</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="silver" id="color-silver">
+                        <label class="silver" for="color-silver">Срібний</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="green" id="color-green">
+                        <label class="green" for="color-green">Зелений</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="blue" id="color-blue">
+                        <label class="blue" for="color-blue">Синій</label>
+                    </div>
+                </fieldset>
+                <fieldset class="price-filter">
+                    <legend>Оберіть діапазон ціни:</legend>
+                    <div>
+                        Від
+                        <input type="text" id="priceMin"> грн - До
+                        <input type="text" id="priceMax"> грн
+                    </div>
+                </fieldset>
+            </div>
+            <div id="gridWrap" class="grid-wrap"></div>
         </div>
     </main>
     <script src="assets/js/main.js"></script>

@@ -177,7 +177,7 @@ var cars = [{
   fuel: 'diesel',
   price: 4500000
 }];
-var container = document.getElementById('container');
+var container = document.getElementById('gridWrap');
 
 function renderCards() {
   container.innerHTML = "";

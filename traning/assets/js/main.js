@@ -193,7 +193,7 @@ const cars = [
     }
 ];
 
-const container = document.getElementById('container');
+const container = document.getElementById('gridWrap');
 
 function renderCards (){
     container.innerHTML = ``;
