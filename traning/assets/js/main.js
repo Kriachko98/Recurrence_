@@ -262,6 +262,16 @@ saveFilter.addEventListener('click', function (){
         );
     }
 
+    // По ціні
+    const minPrice = document.getElementById('priceMin').value;
+    const maxPrice = document.getElementById('priceMax').value;
+    if(minPrice >= 0 && maxPrice > 0){
+        filteredCars = filteredCars.filter(el => el.price >= minPrice && el.price <= maxPrice);
+    }
+
+    // Нова чи вживана
+    
+
     // Нічого не знайдено
     if(filteredCars.length === 0){
         container.innerHTML = `<h1>За Вашим запитом нічого не знайдено</h1>`;

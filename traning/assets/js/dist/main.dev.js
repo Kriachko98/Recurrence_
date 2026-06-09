@@ -259,7 +259,18 @@ saveFilter.addEventListener('click', function () {
     filteredCars = filteredCars.filter(function (el) {
       return selectedColors.includes(el.color);
     });
-  } // Нічого не знайдено
+  } // По ціні
+
+
+  var minPrice = document.getElementById('priceMin').value;
+  var maxPrice = document.getElementById('priceMax').value;
+
+  if (minPrice >= 0 && maxPrice > 0) {
+    filteredCars = filteredCars.filter(function (el) {
+      return el.price >= minPrice && el.price <= maxPrice;
+    });
+  } // Нова чи вживана
+  // Нічого не знайдено
 
 
   if (filteredCars.length === 0) {
