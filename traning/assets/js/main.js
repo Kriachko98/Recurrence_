@@ -270,7 +270,10 @@ saveFilter.addEventListener('click', function (){
     }
 
     // Нова чи вживана
-    
+    const state = document.querySelector('input[name="carState"]:checked');
+    if(state){
+        filteredCars = filteredCars.filter(el => state.value === 'newCar' ? el.isNew : !el.isNew);
+    }
 
     // Нічого не знайдено
     if(filteredCars.length === 0){

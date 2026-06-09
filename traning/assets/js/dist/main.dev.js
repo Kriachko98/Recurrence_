@@ -270,7 +270,15 @@ saveFilter.addEventListener('click', function () {
       return el.price >= minPrice && el.price <= maxPrice;
     });
   } // Нова чи вживана
-  // Нічого не знайдено
+
+
+  var state = document.querySelector('input[name="carState"]:checked');
+
+  if (state) {
+    filteredCars = filteredCars.filter(function (el) {
+      return state.value === 'newCar' ? el.isNew : !el.isNew;
+    });
+  } // Нічого не знайдено
 
 
   if (filteredCars.length === 0) {
