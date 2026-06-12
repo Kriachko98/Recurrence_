@@ -7,7 +7,7 @@
 
 body {
     font-weight: 400;
-    background-color: rgb(242, 232, 219);
+    background-color: #f2e8db;
 }
 
 ul, ol {
@@ -164,4 +164,31 @@ fieldset {
     .isNew-filter {
         height: 80px;
     }
+    #saveFilter {
+        width: 120px;
+        height: 50px;
+        background-color: #e9c292;
+        border: 3px solid #f79e33;
+        margin-top: 50px;
+        &:hover {
+            cursor: pointer;
+            background-color: #f79e33;
+        }
+    }
+}
+
+.filter-options {
+    position: absolute;
+    top: -800px;
+    left: 100px;
+    background-color: #fbeee0;
+    border: 10px solid #e9ac61;
+    z-index: 10;
+    padding: 100px;
+    width: 90%;
+}
+
+.active-filter {
+    top: 50px;
+    left: 100px;
 }

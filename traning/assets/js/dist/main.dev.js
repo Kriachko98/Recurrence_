@@ -61,7 +61,7 @@ var cars = [{
   year: 2015,
   power: 314,
   isNew: false,
-  fuel: 'disel',
+  fuel: 'diesel',
   price: 728000
 }, {
   id: 894781,
@@ -197,50 +197,19 @@ function renderCards(arr) {
   });
 }
 
-renderCards(cars); // Сортування
-
-var sorting = document.getElementById('sorting');
-sorting.addEventListener('change', function () {
-  switch (sorting.value) {
-    case 'price-inc':
-      cars.sort(function (a, b) {
-        return a.price - b.price;
-      });
-      break;
-
-    case 'price-dec':
-      cars.sort(function (a, b) {
-        return b.price - a.price;
-      });
-      break;
-
-    case 'year-new':
-      cars.sort(function (a, b) {
-        return b.year - a.year;
-      });
-      break;
-
-    case 'year-old':
-      cars.sort(function (a, b) {
-        return a.year - b.year;
-      });
-      break;
-  }
-
-  ;
-  renderCards(cars);
-}); // Фільтрування
+renderCards(cars); // Фільтрування
 
 var saveFilter = document.getElementById('saveFilter');
+var filter = document.querySelector('.filter-options');
+var filteredCars = cars;
 saveFilter.addEventListener('click', function () {
-  // По бренду
+  filteredCars = [].concat(cars); // По бренду
+
   var checkedBrands = document.querySelectorAll('.model-filter input:checked');
 
   var selectedBrands = _toConsumableArray(checkedBrands).map(function (el) {
     return el.name;
   });
-
-  var filteredCars = cars;
 
   if (selectedBrands.length > 0) {
     filteredCars = filteredCars.filter(function (el) {
@@ -262,8 +231,8 @@ saveFilter.addEventListener('click', function () {
   } // По ціні
 
 
-  var minPrice = document.getElementById('priceMin').value;
-  var maxPrice = document.getElementById('priceMax').value;
+  var minPrice = Number(document.getElementById('priceMin').value);
+  var maxPrice = Number(document.getElementById('priceMax').value);
 
   if (minPrice >= 0 && maxPrice > 0) {
     filteredCars = filteredCars.filter(function (el) {
@@ -283,9 +252,55 @@ saveFilter.addEventListener('click', function () {
 
   if (filteredCars.length === 0) {
     container.innerHTML = "<h1>\u0417\u0430 \u0412\u0430\u0448\u0438\u043C \u0437\u0430\u043F\u0438\u0442\u043E\u043C \u043D\u0456\u0447\u043E\u0433\u043E \u043D\u0435 \u0437\u043D\u0430\u0439\u0434\u0435\u043D\u043E</h1>";
+    filter.classList.remove('active-filter');
     return;
   }
 
-  console.log(filteredCars);
+  sortElem(filteredCars);
+  filter.classList.remove('active-filter');
+  renderCards(filteredCars);
+}); // Відкриття вікна з фільтрацією
+
+var openFilter = document.getElementById('filterBtn');
+openFilter.addEventListener('click', function () {
+  filter.classList.add('active-filter');
+}); // Сортування
+
+var currentSort = '';
+var sorting = document.getElementById('sorting');
+
+function sortElem(arr) {
+  switch (currentSort) {
+    case 'price-inc':
+      arr.sort(function (a, b) {
+        return a.price - b.price;
+      });
+      break;
+
+    case 'price-dec':
+      arr.sort(function (a, b) {
+        return b.price - a.price;
+      });
+      break;
+
+    case 'year-new':
+      arr.sort(function (a, b) {
+        return b.year - a.year;
+      });
+      break;
+
+    case 'year-old':
+      arr.sort(function (a, b) {
+        return a.year - b.year;
+      });
+      break;
+  }
+
+  ;
+}
+
+sorting.addEventListener('change', function () {
+  currentSort = sorting.value;
+  sortElem(filteredCars);
   renderCards(filteredCars);
 });

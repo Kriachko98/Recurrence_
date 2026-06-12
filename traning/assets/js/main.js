@@ -56,7 +56,7 @@ const cars = [
         year: 2015,
         power: 314,
         isNew: false,
-        fuel: 'disel',
+        fuel: 'diesel',
         price: 728000
     },
     {
@@ -217,35 +217,15 @@ function renderCards (arr){
 renderCards(cars);
 
 
-// Сортування
-const sorting = document.getElementById('sorting');
-sorting.addEventListener('change', function (){
-    switch(sorting.value){
-        case 'price-inc':
-            cars.sort((a, b) => a.price - b.price);
-            break;
-        case 'price-dec':
-            cars.sort((a, b) => b.price - a.price);
-            break;
-        case 'year-new':
-            cars.sort((a, b) => b.year - a.year);
-            break;
-        case 'year-old':
-            cars.sort((a, b) => a.year - b.year);
-            break;
-    };
-
-    renderCards(cars);
-});
-
-
 // Фільтрування
 const saveFilter = document.getElementById('saveFilter');
+const filter = document.querySelector('.filter-options');
+let filteredCars = cars;
 saveFilter.addEventListener('click', function (){
+    filteredCars = [...cars];
     // По бренду
     const checkedBrands = document.querySelectorAll('.model-filter input:checked');
     const selectedBrands = [...checkedBrands].map(el => el.name);
-    let filteredCars = cars;
     
     if (selectedBrands.length > 0) {
         filteredCars = filteredCars.filter(el =>
@@ -263,8 +243,8 @@ saveFilter.addEventListener('click', function (){
     }
 
     // По ціні
-    const minPrice = document.getElementById('priceMin').value;
-    const maxPrice = document.getElementById('priceMax').value;
+    const minPrice = Number(document.getElementById('priceMin').value);
+    const maxPrice = Number(document.getElementById('priceMax').value);
     if(minPrice >= 0 && maxPrice > 0){
         filteredCars = filteredCars.filter(el => el.price >= minPrice && el.price <= maxPrice);
     }
@@ -278,10 +258,42 @@ saveFilter.addEventListener('click', function (){
     // Нічого не знайдено
     if(filteredCars.length === 0){
         container.innerHTML = `<h1>За Вашим запитом нічого не знайдено</h1>`;
+        filter.classList.remove('active-filter');
         return;
     }
 
-    console.log(filteredCars);
+    sortElem(filteredCars)
+    filter.classList.remove('active-filter');
     renderCards(filteredCars);
 });
 
+// Відкриття вікна з фільтрацією
+const openFilter = document.getElementById('filterBtn');
+openFilter.addEventListener('click', function(){
+    filter.classList.add('active-filter');
+});
+
+// Сортування
+let currentSort = '';
+const sorting = document.getElementById('sorting');
+function sortElem (arr){
+    switch(currentSort){
+        case 'price-inc':
+            arr.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-dec':
+            arr.sort((a, b) => b.price - a.price);
+            break;
+        case 'year-new':
+            arr.sort((a, b) => b.year - a.year);
+            break;
+        case 'year-old':
+            arr.sort((a, b) => a.year - b.year);
+            break;
+    };
+}
+sorting.addEventListener('change', function (){
+    currentSort = sorting.value;
+    sortElem(filteredCars);
+    renderCards(filteredCars);
+});
